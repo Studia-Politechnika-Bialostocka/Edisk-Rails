@@ -1,7 +1,71 @@
-<p>Hello <%= @email %>!</p>
-
 <% if @resource.try(:unconfirmed_email?) %>
   <p>We're contacting you to notify you that your email is being changed to <%= @resource.unconfirmed_email %>.</p>
 <% else %>
   <p>We're contacting you to notify you that your email has been changed to <%= @resource.email %>.</p>
 <% end %>
+
+
+<p>Welcome <%= @email %>!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+
+  <style type="text/css">
+      body {
+          margin: 0 30px;
+          padding: 0;
+          font-family: 'Roboto', sans-serif;
+          font-weight: 400;
+          color: #212529;
+      }
+      .container{
+          max-width: 480px;
+          margin: 20px auto;
+      }
+      .container img{
+          margin: 0 auto;
+          display: block;
+      }
+
+      .container .logo-blue{width: 200px;}
+
+      .container .logo-grey{width: 100px;}
+
+      .container hr{margin: 20px 0 20px 0;}
+
+      .container .sent-by{
+          font-size: 12px;
+          text-align: center;
+      }
+  </style>
+</head>
+<body>
+<div class="container">
+  <img class="logo-blue" src="https://d15k2d11r6t6rl.cloudfront.net/public/users/Integrators/BeeProAgency/658413_640707/disk%20logo_blue.svg" alt="logo">
+  <hr>
+  <p>Hi <%=@email%></p>
+  <% if @resource.try(:unconfirmed_email?) %>
+    <p>We're contacting you to notify you that your email is being changed to <%= @resource.unconfirmed_email %>.</p>
+  <% else %>
+    <p>We're contacting you to notify you that your email has been changed to <%= @resource.email %>.</p>
+  <% end %>
+  <hr>
+  <p class="sent-by">This message was sent to you by Edisk - University Project</p>
+  <img class="logo-grey" src="https://d15k2d11r6t6rl.cloudfront.net/public/users/Integrators/BeeProAgency/658413_640707/disk%20logo_grey.svg" alt="Edisk logo">
+</div>
+</body>
+
+</html>
+
