@@ -7,6 +7,6 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 8 }, format: { with: /[A-Za-z0-9][^A-Za-z0-9\s]|[^A-Za-z0-9\s][A-Za-z0-9]/,
                                                         message: "at least one special character and a letter/number" }
 
-end
+  validates :username, uniqueness: true, length: { minimum: 2}
 
-# [A-Za-z0-9][^A-Za-z0-9\s]|[^A-Za-z0-9\s][A-Za-z0-9]
+end
