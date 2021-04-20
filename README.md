@@ -20,4 +20,4 @@ projekt dla grupy maksymalnie 3-osobowej
 * Maciej Bociuk
 * Mateusz Sekściński
 ---
-https://edisk.herokuapp.com/
+https://edisk.herokuapp.com/    
