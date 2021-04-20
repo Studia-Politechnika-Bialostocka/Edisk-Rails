@@ -26,6 +26,9 @@ Rails.application.routes.draw do
     patch 'password', to: 'devise/passwords#update',      as: :user_password
     post  'password',  to: 'devise/passwords#create'
     put   'password', to: 'devise/passwords#update'
+
+    get "/:path", to: "directory#show"
+
   end
 
 end
