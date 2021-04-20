@@ -59,6 +59,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "rexml"
 
+gem 'acts_as_tree'
 gem 'devise'
 
 #Letter Opener
