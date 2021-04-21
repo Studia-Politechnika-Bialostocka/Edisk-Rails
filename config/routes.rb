@@ -26,8 +26,13 @@ Rails.application.routes.draw do
     patch 'password', to: 'devise/passwords#update',      as: :user_password
     post  'password',  to: 'devise/passwords#create'
     put   'password', to: 'devise/passwords#update'
-  end
 
+    # disc details
+    get "user_details", to: "disc_details#general_details", as: :details_of_user
+    post "user_details", to: "disc_details#general_details"
+  end
+  #get "/user_details", to: "disc_details#general_details", as: :details_of_user
+  #post "/user_details", to: "disc_details#general_details" #to do mojego testowania bo ciezko sie logowac, te w as user normalnie by bylo
 end
 
 
