@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root "main#index"
-
   # devise_for :users
 
   devise_for :users, skip: [:sessions, :registrations, :passwords]
@@ -27,9 +26,17 @@ Rails.application.routes.draw do
     post  'password',  to: 'devise/passwords#create'
     put   'password', to: 'devise/passwords#update'
 
-    get "/:path", to: "directory#show"
+
+
 
   end
+
+  get "/edisk_directory_new", to: "edisk_directory#new"
+  post "/edisk_directory_new", to: "edisk_directory#create"
+
+  get "/:path", to: "edisk_directory#show"
+  post "/:path", to:"edisk_directory#index"
+
 
 end
 
