@@ -1,0 +1,33 @@
+<table style="width:100%">
+  <tr>
+    <th>Account creation date: </th>
+    <td><%=@acc_creation_date %></td>
+  </tr>
+  <tr>
+    <th>Account stauts:</th>
+    <td><%=@acc_status %></td>
+  </tr>
+  <tr>
+    <th>File count:</th>
+    <td><%=@acc_file_count %></td>
+  </tr>
+  <tr>
+    <th>Last activity date:</th>
+    <td><%=@acc_last_act_date %></td>
+  </tr>
+  <tr>
+    <th>Last activity type:</th>
+    <td><%=@acc_last_act_type %></td>
+  </tr>
+  <tr>
+    <th>Disc maximum usage:</th>
+    <td><%=@disc_max_usage %></td>
+  </tr>
+  <tr>
+    <th>Disc current usage:</th>
+    <td><%=@disc_curr_usage %></td>
+  </tr>
+</table>
+<%= pie_chart({"Football" => 10, "Basketball" => 5}) %>
+<%= pie_chart [["Football", 10], ["Basketball", 5]] %>
+#

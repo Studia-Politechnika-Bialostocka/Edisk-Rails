@@ -1,0 +1,1 @@
+require("chartkick/chart.js")
