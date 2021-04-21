@@ -64,3 +64,9 @@ gem 'devise'
 #Letter Opener
 # https://github.com/ryanb/letter_opener
 gem "letter_opener", :group => :development
+
+
+#charts
+gem 'chartkick'
+#data segregation
+gem 'groupdate'
