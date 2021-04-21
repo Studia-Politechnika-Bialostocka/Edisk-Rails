@@ -1,0 +1,9 @@
+<h1>Dokumenciki</h1>
+
+<ul>
+  <% @edisk_directory.each do |directory| %>
+    <li>
+      <%= directory.name %>
+    </li>
+  <% end %>
+</ul>
