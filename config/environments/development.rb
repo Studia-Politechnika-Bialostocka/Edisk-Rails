@@ -92,6 +92,6 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-
+  Rack::MiniProfiler.config.position = 'bottom-right'
 
 end
