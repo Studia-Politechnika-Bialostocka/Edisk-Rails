@@ -1,0 +1,45 @@
+<%= stylesheet_pack_tag 'navbarmain' %>
+
+<nav class="navbar navbar-expand-lg navbar-light d-flex", id="navbar-main">
+  <div class="container-fluid">
+
+    <a class="navbar-brand cloud-logo d-flex"  href="<%= root_path %>">
+      <svg height="50" viewBox="0 0 122 105" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M62.3181 0.0630151C32.7181 -1.53698 28.6514 27.7297 30.3181 42.563L43.3181 44.563C43.3181 22.063 43.8181 13.063 62.3181 12.063C77.1181 11.263 80.3181 26.063 79.3181 29.063L91.8181 38.563C94.3181 26.3963 91.9181 1.66302 62.3181 0.0630151Z" fill="#53607A"/>
+        <path d="M45.5835 44.2048C26.7835 31.8048 20.0835 48.0381 19.0835 57.7048C13.2502 59.8714 1.28349 67.3048 0.0834859 79.7048C-1.11651 92.1048 10.9168 100.871 17.0835 103.705C43.7502 104.538 98.0835 105.705 102.083 103.705C107.083 101.205 120.083 97.7048 121.083 79.7048C121.883 65.3048 108.75 58.0381 102.083 56.2048C102.583 48.0381 98.7835 30.7048 79.5835 26.7048C60.3835 22.7048 48.9168 36.7048 45.5835 44.2048Z" fill="#0B4DC8"/>
+        <path d="M61.5 56L75 66.5H67.515L67.5 83H55.5V66.5H48L61.5 56Z" fill="white"/>
+      </svg>
+      <%= link_to "Edisk", root_path, class: "navbar-brand text-logo" %>
+      <!--      <a class="navbar-brand text-logo" href="<%#=root_path %>">Edisk</a>-->
+    </a>
+    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <!--          <a class="nav-link" href="#">About</a>-->
+          <%= link_to "About", root_path, class: "nav-link active" %>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <% if user_signed_in?%>
+          <li class="nav-item ">
+            <!--            <span class="px-5 " ><%#= Current.user.username %></span>-->
+            <%= link_to current_user.username, edit_user_registration_path, class: "nav-link px-5", id: "username-navbar" %>
+          </li>
+          <li class="nav-item">
+            <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-primary ml-4 nav-button", type: "button" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, class: "nav-link"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
