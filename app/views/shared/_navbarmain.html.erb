@@ -1,6 +1,6 @@
-<%= stylesheet_pack_tag 'navbar' %>
+<%= stylesheet_pack_tag 'navbarmain' %>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light d-flex", id="navbar-main">
   <div class="container-fluid">
 
     <a class="navbar-brand cloud-logo d-flex"  href="<%= root_path %>">
@@ -10,7 +10,7 @@
         <path d="M61.5 56L75 66.5H67.515L67.5 83H55.5V66.5H48L61.5 56Z" fill="white"/>
       </svg>
       <%= link_to "Edisk", root_path, class: "navbar-brand text-logo" %>
-<!--      <a class="navbar-brand text-logo" href="<%#=root_path %>">Edisk</a>-->
+      <!--      <a class="navbar-brand text-logo" href="<%#=root_path %>">Edisk</a>-->
     </a>
     <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -18,7 +18,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-<!--          <a class="nav-link" href="#">About</a>-->
+          <!--          <a class="nav-link" href="#">About</a>-->
           <%= link_to "About", root_path, class: "nav-link active" %>
         </li>
       </ul>
@@ -26,7 +26,7 @@
         <% if user_signed_in?%>
           <li class="nav-item ">
             <!--            <span class="px-5 " ><%#= Current.user.username %></span>-->
-            <%= link_to current_user.username, edit_user_registration_path, class: "nav-link px-5 username" %>
+            <%= link_to current_user.username, edit_user_registration_path, class: "nav-link px-5", id: "username-navbar" %>
           </li>
           <li class="nav-item">
             <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-primary ml-4 nav-button", type: "button" %>
@@ -38,7 +38,7 @@
           <li class="nav-item">
             <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
           </li>
-          <% end %>
+        <% end %>
       </ul>
     </div>
   </div>
