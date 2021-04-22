@@ -3,29 +3,13 @@
  * Copyright 2013-2020 Start Bootstrap
  * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-one-page-wonder/blob/master/LICENSE)
  */
+$primary-color: #0B4DC8;
+$secondary-color: #833AB4;
+$tertiary-color: #C13584;
+$primary: #0B4DC8;
 
 body {
     font-family: 'Oswald', sans-serif !important;
-}
-
-/*nav{*/
-/*    position: fixed !important;*/
-/*    width: 100%;*/
-/*}*/
-
-nav.navbar{
-    /*position: fixed !important;*/
-    z-index: 100;
-    background-color: rgba(255,255,255,0.3) !important;
-}
-
-.username{
-    font-size: 1.3rem !important;
-    color: #fff !important;
-}
-
-.nav-button{
-    background-color: #0B4DC8 !important;
 }
 
 .btn-xl {
@@ -34,6 +18,7 @@ nav.navbar{
     font-size: 0.9rem;
     font-weight: 700;
     letter-spacing: 0.1rem;
+    background-color: $secondary-color !important;
 }
 
 .rounded-pill {
@@ -47,7 +32,7 @@ header.masthead {
     overflow: hidden;
     padding-top: calc(7rem + 72px);
     padding-bottom: 7rem;
-    background: linear-gradient(0deg, #0B4DC8 0%, #ee0979 100%);
+    background: linear-gradient(0deg, $primary-color 0%, $secondary-color 100%);
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: scroll;
@@ -71,7 +56,7 @@ header.masthead .bg-circle {
     z-index: 0;
     position: absolute;
     border-radius: 100%;
-    background: linear-gradient(0deg, #ee0979 0%, #0B4DC8 100%);
+    background: linear-gradient(0deg, $secondary-color 0%, $primary-color 100%);
 }
 
 header.masthead .bg-circle-1 {
@@ -116,33 +101,33 @@ header.masthead .bg-circle-4 {
 }
 
 .bg-primary {
-    background-color: #ee0979 !important;
+    background-color: $secondary-color !important;
 }
 
 .btn-primary {
-    background-color: #ee0979;
-    border-color: #ee0979;
+    background-color: $secondary-color;
+    border-color: $secondary-color;
 }
 
 .btn-primary:active, .btn-primary:focus, .btn-primary:hover {
-    background-color: #bd0760 !important;
-    border-color: #bd0760 !important;
+    background-color: $tertiary-color !important;
+    border-color: $tertiary-color !important;
 }
 
-.btn-primary:focus {
-    box-shadow: 0 0 0 0.2rem rgba(238, 9, 121, 0.5);
-}
+/*.btn-primary:focus {*/
+/*    box-shadow: 0 0 0 0.2rem rgba(238, 9, 121, 0.5);*/
+/*}*/
 
 .btn-secondary {
-    background-color: #0B4DC8;
-    border-color: #0B4DC8;
+    background-color: $primary-color;
+    border-color: $primary-color;
 }
 
-.btn-secondary:active, .btn-secondary:focus, .btn-secondary:hover {
-    background-color: #cc5500 !important;
-    border-color: #cc5500 !important;
-}
+/*.btn-secondary:active, .btn-secondary:focus, .btn-secondary:hover {*/
+/*    background-color: #cc5500 !important;*/
+/*    border-color: #cc5500 !important;*/
+/*}*/
 
-.btn-secondary:focus {
-    box-shadow: 0 0 0 0.2rem rgba(255, 106, 0, 0.5);
-}
+/*.btn-secondary:focus {*/
+/*    box-shadow: 0 0 0 0.2rem rgba(255, 106, 0, 0.5);*/
+/*}*/
