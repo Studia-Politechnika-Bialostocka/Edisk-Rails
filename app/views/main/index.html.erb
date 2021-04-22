@@ -1,11 +1,26 @@
-<h1 class="text-center">Welcome to Edisk</h1>
-<% if user_signed_in?%>
-    <div class="text-left">
-      <%= link_to "Add new directory", "edisk_directory_new" %>
+<%#= stylesheet_pack_tag 'home-page' %>
+
+<header class="masthead text-center text-white">
+  <div class="masthead-content">
+    <div class="container">
+      <h1 class="masthead-heading mb-0">Share your files
+      </h1>
+      <h2 class="masthead-subheading mb-0">with the whole world</h2>
+      <%if user_signed_in?%>
+        <a href="#" class="btn btn-primary btn-xl rounded-pill mt-5">Open Drive</a>
+      <%else %>
+        <%= link_to "Create Account", new_user_registration_path, class: "btn btn-primary btn-xl rounded-pill mt-5" %>
+      <%end %>
     </div>
-  <div class="button-right">
-    <button>
-      <a href="~" class="btn btn-info" role="button">Link Button</a>
-    </button>
   </div>
-<%end %>
+  <div class="bg-circle-1 bg-circle"></div>
+  <div class="bg-circle-2 bg-circle"></div>
+  <div class="bg-circle-3 bg-circle"></div>
+  <div class="bg-circle-4 bg-circle"></div>
+</header>
+
+<footer class="footer, mt-auto, mb-0, py-3 bg-light fixed-bottom">
+  <div class="container-fluid">
+    <p class="text-center">Made with ❤ by 🧑‍🚀 Mateusz Białowąs |🦸‍♂️ Maciej Bociuk | 👨‍💻 Mateusz Sekściński</p>
+  </div>
+</footer>
