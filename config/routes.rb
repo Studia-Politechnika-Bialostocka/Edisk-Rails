@@ -31,9 +31,15 @@ Rails.application.routes.draw do
     get "/user_details", to: "disc_details#general_details", as: :details_of_user
     post "/user_details" => "disc_details#general_details"
 
-    get "/:path", to: "directory#show"
 
   end
+
+  get "/edisk_directory_new", to: "edisk_directory#new"
+  post "/edisk_directory_new", to: "edisk_directory#create"
+
+  get "/:path", to: "edisk_directory#show"
+  post "/:path", to:"edisk_directory#index"
+
 
 end
 
