@@ -1,5 +1,5 @@
 class DiscDetailsController < ApplicationController
-
+  respond_to :html, :json
   @acc_creation_date
   @acc_status
   @acc_file_count
