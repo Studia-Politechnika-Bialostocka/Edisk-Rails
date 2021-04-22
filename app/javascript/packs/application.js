@@ -16,13 +16,8 @@
 // const imagePath = (name) => images(name, true)
 
 console.log('Hello World from Webpacker')
-import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
-import * as ActiveStorage from "@rails/activestorage"
-import "channels"
-
-Rails.start()
-Turbolinks.start()
-ActiveStorage.start()
 
 import '../styles/site.scss'
+import '../styles/navbarmain.scss'
+import '../styles/navbar.css'
+import '../styles/home-page.scss'

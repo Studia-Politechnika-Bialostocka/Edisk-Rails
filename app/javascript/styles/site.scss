@@ -1,8 +1,5 @@
-$btn-primary: #0cf851;
-h1{
-  color: red;
-}
-
+$primary-color: #0B4DC8;
 .btn-primary{
-  background-color: red;
+  background-color: $primary_color !important;
+  border: $primary_color !important;
 }
