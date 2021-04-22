@@ -28,11 +28,11 @@ Rails.application.routes.draw do
     put   'password', to: 'devise/passwords#update'
 
     # disc details
-    get "user_details", to: "disc_details#general_details", as: :details_of_user
-    post "user_details", to: "disc_details#general_details"
+    #get "user_details", to: "disc_details#general_details", as: :details_of_user
+    #post "user_details", to: "disc_details#general_details"
   end
-  #get "/user_details", to: "disc_details#general_details", as: :details_of_user
-  #post "/user_details", to: "disc_details#general_details" #to do mojego testowania bo ciezko sie logowac, te w as user normalnie by bylo
+  get "/user_details", to: "disc_details#general_details", as: :details_of_user
+  post "/user_details", to: "disc_details#general_details" #to do mojego testowania bo ciezko sie logowac, te w as user normalnie by bylo
 end
 
 
