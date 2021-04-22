@@ -27,6 +27,10 @@ Rails.application.routes.draw do
     post  'password',  to: 'devise/passwords#create'
     put   'password', to: 'devise/passwords#update'
 
+    # user disc details
+    get "/user_details", to: "disc_details#general_details", as: :details_of_user
+    post "/user_details" => "disc_details#general_details"
+
     get "/:path", to: "directory#show"
 
   end
