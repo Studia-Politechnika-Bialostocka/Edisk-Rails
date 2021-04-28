@@ -9,11 +9,10 @@ class EdiskDirectoryController < ApplicationController
 
     @edisk_directory = current_user.edisk_directories.children_of(params[:id]).new(edisk_directory_params)
 
-
     if @edisk_directory.save
-      redirect_to root_path, notice: "Succesfully created"
+      redirect_to "/edisk_directories/" + @edisk_directory.parent_id.to_s, notice: "Succesfully created"
     else
-      redirect_to root_path, notice:"Something goes wrong"
+      render new, notice:"Something goes wrong"
     end
   end
 
@@ -34,8 +33,11 @@ class EdiskDirectoryController < ApplicationController
   # end
 
   def destroy
-    @edisk_directory = EdiskDirectory.find(:params[:id])
+    @edisk_directory = EdiskDirectory.find(params[:id])
+    s = @edisk_directory.parent_id
     @edisk_directory.destroy
+
+    redirect_to "/edisk_directories/" + s.to_s
   end
 
   def show

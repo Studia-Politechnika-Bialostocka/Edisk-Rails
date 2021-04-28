@@ -31,20 +31,20 @@ Rails.application.routes.draw do
 
   end
 
-  get "edisk_directories/:id/new", to: "edisk_directory#new"
-  post "edisk_directories/:id/new", to: "edisk_directory#create"
+  get "edisk_directory/:id/new", to: "edisk_directory#new"
+  post "edisk_directory/:id/new", to: "edisk_directory#create"
 
-  get "edisk_directories/:id/edit", to: "edisk_directory#edit"
-  post "edisk_directories/:id/edit", to: "edisk_directory#update"
+  get "edisk_directory/:id/edit", to: "edisk_directory#edit"
+  post "edisk_directory/:id/edit", to: "edisk_directory#update"
 
-  delete "edisk_directories/:id/destroy", to:"edisk_directory#destroy"
+  delete "edisk_directory/:id/destroy", to:"edisk_directory#destroy"
 
-  get "edisk_directories/:id", to: "edisk_directory#show"
-  post "edisk_directories/:id", to:"edisk_directory#index"
-
-
+  get "edisk_directory/:id", to: "edisk_directory#show"
+  post "edisk_directory/:id", to:"edisk_directory#index"
   # get "/:path/edisk_directory_edit", to: "edisk_directory#edit"
   # patch "/:path/edisk_directory_edit", to:"edisk_directory#update"
+  resources :edisk_directory do
+  end
 
 
 end
