@@ -49,6 +49,6 @@ class EdiskDirectoryController < ApplicationController
 
     private
     def edisk_directory_params
-      params.permit(:name, :path)
+      params.permit(:name, :path, :parent_id, :ancestry, :user_id)
     end
   end

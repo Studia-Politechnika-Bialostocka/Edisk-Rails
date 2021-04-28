@@ -3,13 +3,13 @@
 <%= form_with(model: @edisk_directories, local: true) do |f| %>
   <div class="field, form-group">
     <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: :name, class: "form-control mb-2"%>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control mb-2"%>
   </div>
 <% %>
   <div>
 
     <%= f.label :path %>
-    <%= f.collection_select :parent_id, EdiskDirectory.all.excluding(EdiskDirectory.descendants_of(EdiskDirectory.find(params[:id]))), :id, :name, :prompt => "Select a Category" %>
+    <%= f.collection_select :parent_id, EdiskDirectory.all.where(id: current_user.id).excluding(EdiskDirectory.descendants_of(EdiskDirectory.find(params[:id]))), :id, :name, :prompt => "Select a Category" %>
 
   </div>
 
