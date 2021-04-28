@@ -7,6 +7,8 @@
     <li>
       <%= link_to directory.name, "/edisk_directories/" + directory.id.to_s %>
       <%= link_to "Edit", "/edisk_directories/" + directory.id.to_s + "/edit"%>
+      <%#= button_to "Destroy", edisk_directory_path(directory), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-primary' %>
+
     </li>
   <% end %>
 </ul>

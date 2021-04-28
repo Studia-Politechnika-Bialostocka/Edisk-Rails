@@ -29,22 +29,19 @@ class EdiskDirectoryController < ApplicationController
         render :edit, notice: "Something goes wrong"
   end
   end
-  def index
-    @edisk_directory = EdiskDirectory.all
-  end
+  # def index
+  #   @edisk_directory = EdiskDirectory.all
+  # end
 
   def destroy
-    @edisk_directory = EdiskDirectory.find(name:params[:id])
-    if @edisk_directory != nil
-      @edisk_directory.destroy
-    end
-
+    @edisk_directory = EdiskDirectory.find(:params[:id])
+    @edisk_directory.destroy
   end
 
   def show
     @edisk_directory = EdiskDirectory.find(params[:id])
     @edisk_directories = nil
-    @edisk_directories = EdiskDirectory.children_of(@edisk_directory)
+    @edisk_directories = EdiskDirectory.children_of(@edisk_directory).where(user_id: current_user.id)
     if @edisk_directories == nil
       "Nothing to show"
     end

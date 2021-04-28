@@ -37,8 +37,11 @@ Rails.application.routes.draw do
   get "edisk_directories/:id/edit", to: "edisk_directory#edit"
   post "edisk_directories/:id/edit", to: "edisk_directory#update"
 
+  delete "edisk_directories/:id/destroy", to:"edisk_directory#destroy"
+
   get "edisk_directories/:id", to: "edisk_directory#show"
   post "edisk_directories/:id", to:"edisk_directory#index"
+
 
   # get "/:path/edisk_directory_edit", to: "edisk_directory#edit"
   # patch "/:path/edisk_directory_edit", to:"edisk_directory#update"
