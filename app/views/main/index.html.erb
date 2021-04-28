@@ -1,11 +1,10 @@
 <h1 class="text-center">Welcome to Edisk</h1>
 <% if user_signed_in?%>
-    <div class="text-left">
-      <%= link_to "Add new directory", "edisk_directory_new" %>
-    </div>
-  <div class="button-right">
+  <%if EdiskDirectory.all.length === 0%>
+    <%puts "dupa" %>
+    <% EdiskDirectory.create(name:"home", path:"/", id:0)%>
+  <%end %>
     <button>
-      <a href="~" class="btn btn-info" role="button">Link Button</a>
+      <a href="edisk_directories/<%=0 %>" class="btn btn-info" role="button">Go to your disk</a>
     </button>
-  </div>
 <%end %>

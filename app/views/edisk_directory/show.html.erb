@@ -1,10 +1,12 @@
-<h1>Dokumenciki</h1>
-
+<%#s = request.original_fullpath %>
+<%#k =  "/edisk_directories/".length %>
+<%= EdiskDirectory.find(params[:id]).name%>
 <ul>
+  <%=link_to "Dodaj", "/edisk_directories/" + params[:id] + "/new"%>
   <% @edisk_directories.each do |directory| %>
     <li>
-      <%= link_to directory.name, directory.path + directory.name %>
-
+      <%= link_to directory.name, "/edisk_directories/" + directory.id.to_s %>
+      <%= link_to "Edit", "/edisk_directories/" + directory.id.to_s + "/edit"%>
     </li>
   <% end %>
 </ul>
