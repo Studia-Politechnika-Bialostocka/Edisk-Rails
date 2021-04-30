@@ -5,7 +5,7 @@
     <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control mb-2" %>
   </div>
   <div>
-    <%= hidden_field_tag :parent_id, "#{@edisk_directory.id}" %>
+    <%= hidden_field_tag :parent_id, "#{params[:format]}" %>
   </div>
   <%= f.submit "Confirm" %>
 

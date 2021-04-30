@@ -4,7 +4,7 @@
     <%puts "dupa" %>
     <% EdiskDirectory.create(name:"home", path:"/", id:0)%>
   <%end %>
-    <button>
-      <a href="edisk_directory/<%=0 %>" class="btn btn-info" role="button">Go to your disk</a>
-    </button>
+<p>
+      <%= button_to "Go to your disk", edisk_directory_path(EdiskDirectory.find(0)), method: :get, class: "btn btn-success"%>
+</p>
 <%end %>
