@@ -9,7 +9,7 @@
   <div>
 
     <%= f.label :path %>
-    <%= f.collection_select :parent_id, EdiskDirectory.all.where(user_id: current_user.id).excluding(EdiskDirectory.descendants_of(@edisk_directory.id)).excluding(@edisk_directory).including(EdiskDirectory.find(0)), :id, :name, {:selected => @edisk_directory.parent_id} %>
+    <%= f.collection_select :parent_id, EdiskDirectory.all.where(user_id: current_user.id).excluding(EdiskDirectory.descendants_of(@edisk_directory.id)).excluding(@edisk_directory).including(EdiskDirectory.find(0)), :id, :ancestry_into_array, {:selected => @edisk_directory.parent_id} %>
 
   </div>
 
