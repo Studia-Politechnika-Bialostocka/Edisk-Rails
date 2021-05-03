@@ -1,0 +1,22 @@
+<% @temp = EdiskDirectory.find(params[:id]) %>
+<%if @temp.id === 0%>
+  <%= link_to @temp.name, edisk_directory_path(@temp), method: :get %>
+<% else%>
+  <%parent_temp = EdiskDirectory.find(@temp.parent_id) %>
+  <%= link_to parent_temp.name, edisk_directory_path(parent_temp), method: :get %>
+  <%= " / " %>
+  <%= link_to @temp.name, edisk_directory_path(@temp), method: :get %>
+
+<%end %>
+
+<p>Add new directory<%=link_to "+", new_edisk_directory_path(@temp)%></p>
+  <% @edisk_directories.each do |directory| %>
+    <li>
+      <%= link_to directory.name, edisk_directory_path(directory), method: :get %>
+      <%= button_to "Edit", edit_edisk_directory_path(directory), method: :get%>
+
+      <%= button_to "Destroy", edisk_directory_path(directory), method: :delete, data: {confirm: "Are you sure?"} %>
+
+    </li>
+
+  <% end %>

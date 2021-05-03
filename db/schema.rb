@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_19_133342) do
+ActiveRecord::Schema.define(version: 2021_04_28_133409) do
+
+  create_table "edisk_directories", force: :cascade do |t|
+    t.string "name"
+    t.string "path", default: "home"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_edisk_directories_on_ancestry"
+    t.index ["user_id"], name: "index_edisk_directories_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,4 +43,5 @@ ActiveRecord::Schema.define(version: 2021_04_19_133342) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "edisk_directories", "users"
 end
