@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_21_234258) do
+ActiveRecord::Schema.define(version: 2021_04_28_133409) do
 
   create_table "edisk_directories", force: :cascade do |t|
     t.string "name"
-    t.string "path", default: "/~"
+    t.string "path", default: "home"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "parent_id"
     t.integer "user_id"
-    t.string "PathNName"
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_edisk_directories_on_ancestry"
     t.index ["user_id"], name: "index_edisk_directories_on_user_id"
   end
 

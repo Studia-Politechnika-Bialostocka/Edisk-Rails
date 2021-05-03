@@ -1,17 +1,12 @@
-<h5>LOL</h5>
+<h5>Create new directory </h5>
 <%= form_with(model: @edisk_directories, local: true) do |f| %>
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, class: "form-control mb-2" %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control mb-2" %>
   </div>
-
   <div>
-
-    <%= f.label :path %>
-    <%= f.collection_select :path, EdiskDirectory.all, :id, :PathNName, :prompt => "Select a Category" %>
-    <%#= f.text_field :path, autofocus: true %>
+    <%= hidden_field_tag :parent_id, "#{params[:format]}" %>
   </div>
-
   <%= f.submit "Confirm" %>
 
 <% end %>

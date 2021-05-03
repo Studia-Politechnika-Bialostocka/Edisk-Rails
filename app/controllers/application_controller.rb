@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   respond_to :html, :json
 
+
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -12,4 +13,5 @@ class ApplicationController < ActionController::Base
 
     devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:username, :email, :password, :current_password)}
   end
+
 end
