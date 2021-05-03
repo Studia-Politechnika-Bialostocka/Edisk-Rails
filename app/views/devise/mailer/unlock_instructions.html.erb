@@ -1,7 +1,70 @@
-<p>Hello <%= @resource.email %>!</p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
-<p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
 
-<p>Click the link below to unlock your account:</p>
+  <style type="text/css">
+      body {
+          margin: 0 30px;
+          padding: 0;
+          font-family: 'Roboto', sans-serif;
+          font-weight: 400;
+          color: #212529 !important;
+      }
+      .container{
+          max-width: 480px;
+          margin: 20px auto;
+      }
+      .container img{
+          margin: 0 auto;
+          display: block;
+      }
 
-<p><%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token) %></p>
+      .container .logo-blue{width: 200px;}
+
+      .container .logo-grey{width: 100px;}
+
+      .container hr{margin: 20px 0 20px 0;}
+
+      .container .sent-by{
+          font-size: 12px;
+          text-align: center;
+      }
+
+      .button{
+          background-color: #0B4DC8;
+          border: none;
+          color: #F7F7F7 !important;
+          padding: 16px;
+          border-radius: 4px;
+          font-size: 14px;
+          font-weight: bold;
+          text-decoration: none;
+      }
+      p{margin: 26px 0;color: #212529 !important;}
+
+  </style>
+</head>
+<body>
+<div class="container">
+  <img class="logo-blue" src="https://lh3.googleusercontent.com/C74-ngc2ncZJWWOjV2CjKaBk_7TIJzRTFGgqG8z_r-MiP4fkelg388K_PD8wNx-Yzg4nbzDnXRNamthJoast7aIHzfSwWcTfLCMm1n9Ck8ZRvKiu8__ISGUj6VQdXXr56RpjECkEv66DGPR3JW0uBENCxbcg4Y-7oF-8-gwRXMq_9H_J7SI4Y47qjEzkT6jd133HU9Szf_-k50wZ0hT5SgRO_NkUOlJz0pYpR5c1lGMpVpA0PAzrXC4qKscExKEgdpaksbOqIUTgeFxmleVH2wAiPT4FvMnh504dyBosy-sCJvZJU-Q4iXq0L3rIOTLTZDU5XyLbhd_s014JLIs2X--kMAF4RVI4SUu1ipfgNKC5XMv0ho8RfoLbzHxbLto-PTOfeKg4mb_3lswBR49toT-H03cWR_Nw_oOi4-aqT0MVO-yq19Sp9ChYN_MfygQPwH7Sps6iA-Zr3iZeAkEfXuQxCsovXLexSnoJNs_d7-jGE_9lHCmxNUqJvT_Qn3GnoVZKvuyH2JR1iTbrALBSyP4jNmYCl0spcsfvPe2d6YLHBRGm9Zu5CkUegEbW7_UkRmcKJcCFyFFkYngfHUH2XcC_yhq_Ry4rKzoGQDsK9Iwm9kVPprX-3kn9sPQEBLqc_NU6V6ARI7KKDAGvhGB3tLgyBriLT9EWP0fVaJ6LLhtA9kSlBis9iHkzfFVKq2hX2-0uIwYDCTJCTHPX5KYgkUC2=w261-h105-no?authuser=0.png" alt="logo">
+  <hr>
+  <p>Hi <%=@resource.email%></p>
+  <p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p>
+  <p>Click the link below to unlock your account:</p>
+  <%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token), class: "button"  %>
+  <p>If you did't request this, you can safely ignore this email.</p>
+  <hr>
+  <p class="sent-by">This message was sent to you by Edisk - University Project</p>
+  <img class="logo-grey" src="https://lh3.googleusercontent.com/syPxqZ46pBocsg6liVyud2KZ4eSRFSW7lOPAn1XQRoP3MINcVm2480SNcqShbj8ncwu9tUqnKhKsgvpfcyAD9K9t0mdEYmy592nCE4q_a-NRUFocGCbx3VwtfvLKukonNOToaBulbZD8GdQ84mffnoSsNZLEfdZ_rrSV9Fms8pdvIcSdvEjXhc9GYIsIpU3j-0_Oz5N43YhYWgbxwq3BzbnMrT3hZ9YuKS-sfE5MlSni3CNBsG4peSIuHI7Pd9RUBzzcqXczdzKngtOMB5RLfwZORKIaY5auIfZRDIdeb4Ntg646xS0fyqgORHDbDkely6BMchjIzJzNpY65W-C2C2e0sgCvjOWh3ApOdnZYxaIx2PHONmPWR41cmm3sRdguyP-UV53Gj8P7W4RZvAewOYKgJygJjxE2oOcJ0reNe8mkuIzpgjjnlC2o-pTC8JNPGhtKyJeNbkB8nINiLoODWDljbbbERbB-KFnu_QTH5ORDMW902pIe9chuouOQUDiw_YAOQmRPmILiIPQfMmnfO2dfaC1NFGnuIeUj7fUTav8GSor7bHLE1AryyeORkMqAmDE_YSG05IqL6SyeRMPIajulnjQ0AjKtJgwnZxSlP_R5XVewfUkNyh5WhADkKfUykgB3LlTt_wNLzd_i3YXB8AoKc-KLkNGkSEukTUdhph6-8p_TAeAk6cP-GbFHHG6XvKKngTdnb8fvD4cZ-B80zdMY=w261-h106-no?authuser=0.png" alt="Edisk logo">
+</div>
+</body>
+
+</html>
+

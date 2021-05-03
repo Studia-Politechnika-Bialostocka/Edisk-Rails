@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+.text-logo{
+    color: #0B4DC8 !important;
+    font-family: 'Oswald', sans-serif !important;
+    font-size: 1.5rem !important;
+}
+
+.cloud-logo{
+    margin-right: 2px !important;
+}
+
+div.container-fluid{
+    justify-content: start !important;
+}
