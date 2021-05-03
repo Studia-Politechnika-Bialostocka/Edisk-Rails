@@ -8,18 +8,9 @@ class DiscDetailsController < ApplicationController
   @disc_max_usage
   @disc_curr_usage
 
-  def sample_value
-    @acc_creation_date = "data_kreacji_konta"
-    @acc_status = "status konta"
-    @acc_file_count = 0
-    @acc_last_act_date = "data ostaniej aktywnosci"
-    @acc_last_act_type = "typ ostatniej aktywnosci"
-    @disc_max_usage = "10MB"
-    @disc_curr_usage = "1MB"
-  end
+  @users = User.all
 
   def general_details
-    #sample_value
     @who_am_i = current_user.username
     @curr_user = User.find_by(username: @who_am_i)
 
@@ -32,14 +23,32 @@ class DiscDetailsController < ApplicationController
       @acc_status = 'confirment at ' + @curr_user.confirmed_at.to_s
     end
 
-    #@acc_file_count
+    @acc_file_count = file_count
 
     @acc_last_act_date = @curr_user.updated_at
 
-    #@acc_last_act_type
-    #@disc_max_usage
-    #@disc_curr_usage
+    @acc_last_act_type = activity_type
+    @disc_max_usage =  max_usage
+    @disc_curr_usage = current_usage
 
-    render "disk_details/general_details"
+     respond_to do |format|
+       format.html
+     end
+  end
+
+  def current_usage
+    1
+  end
+
+  def file_count
+    0
+  end
+
+  def max_usage
+    10
+  end
+
+  def activity_type
+    "unknown"
   end
 end
