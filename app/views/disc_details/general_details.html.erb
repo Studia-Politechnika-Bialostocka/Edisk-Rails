@@ -21,14 +21,11 @@
   </tr>
   <tr>
     <th>Disc maximum usage:</th>
-    <td><%=@disc_max_usage %></td>
+    <td><%=@disc_max_usage %>MB</td>
   </tr>
   <tr>
     <th>Disc current usage:</th>
-    <td><%=@disc_curr_usage %></td>
+    <td><%=@disc_curr_usage %>MB</td>
   </tr>
 </table>
-<%= pie_chart({"Football" => 10, "Basketball" => 5}) %>
-<%= pie_chart [["Football", 10], ["Basketball", 5]] %>
-<%= @who_am_i %>
-<%= @curr_user %>
+<%= pie_chart ({"Current Usage" => @disc_curr_usage.to_i, "Free space" => @disc_max_usage.to_i-@disc_curr_usage.to_i}) %>
