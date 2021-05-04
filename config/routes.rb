@@ -48,6 +48,11 @@ Rails.application.routes.draw do
   # post "edisk_directories/:id", to:"edisk_directory#index"
   # get "/:path/edisk_directory_edit", to: "edisk_directory#edit"
 
+  # admin
+  as :admin do
+    get '/ed-admin' => 'admin#dashboard', as: :admin_dashboard
+    delete "/ed-admin/:id" => 'admin#destroy', as: :admin_dashboard2
+  end
 
 end
 

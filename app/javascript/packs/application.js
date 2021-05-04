@@ -18,7 +18,8 @@ import "chartkick/chart.js"
 const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-console.log('Hello World from Webpacker')
+console.log('Hello World from Webpacksssssssssser')
+console.log('Hello World from Webpacksssssssssser')
 
 import '../styles/site.scss'
 import '../styles/navbarmain.scss'
