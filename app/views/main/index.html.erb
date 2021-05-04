@@ -4,7 +4,11 @@
       <h1 class="masthead-heading mb-0 header-animation">Share your files</h1>
       <h2 class="masthead-subheading mb-0 header-animation">with the whole world</h2>
       <%if user_signed_in?%>
-        <a href="#" class="btn btn-primary btn-xl rounded-pill mt-5">Open Drive</a>
+          <%if EdiskDirectory.all.length === 0%>
+            <%puts "dupa" %>
+            <% EdiskDirectory.create(name:"home", path:"/", id:0)%>
+          <%end %>
+        <%=  button_to "Open Drive", edisk_directory_path(EdiskDirectory.find(0)), method: :get, class: "btn btn-primary btn-xl rounded-pill mt-5" %>
       <%else %>
         <%= link_to "Create Account", new_user_registration_path, class: "btn btn-primary btn-xl rounded-pill mt-5" %>
       <%end %>

@@ -1,3 +1,3 @@
 
 //= link_tree ../images
-//= link_directory ../stylesheets .styles
+// = link_directory ../stylesheets .styles
