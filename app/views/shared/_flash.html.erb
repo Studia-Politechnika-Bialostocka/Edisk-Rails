@@ -1,13 +1,17 @@
 <% if flash.alert %>
-  <div class="alert alert-warning" role="alert">
-    <%= flash.alert %>
-  </div>
-<% end %>
+    <div class="container mt-5 position-absolute start-50 top-0 translate-middle" style="z-index: 1000">
+      <div class="alert alert-warning flash-animation" role="alert">
+        <%= flash.alert %>
+      </div>
+    </div>
+  <% end %>
 
 
-<% if flash.notice %>
-  <div class="alert alert-info" role="alert">
-    <%= flash.notice %>
-  </div>
-<% end %>
+  <% if flash.notice %>
+    <div class="container mt-5 position-absolute start-50 top-0 translate-middle" style="z-index: 1000">
+      <div class="alert alert-info flash-animation" role="alert">
+        <%= flash.notice %>
+      </div>
+    </div>
+  <% end %>
 

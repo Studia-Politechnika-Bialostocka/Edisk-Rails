@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "main#index"
+
   # devise_for :users
 
   devise_for :users, skip: [:sessions, :registrations, :passwords]
@@ -26,7 +27,9 @@ Rails.application.routes.draw do
     post  'password',  to: 'devise/passwords#create'
     put   'password', to: 'devise/passwords#update'
 
-
+    # user disc details
+    get "/user_details", to: "disc_details#general_details", as: :details_of_user
+    post "/user_details" => "disc_details#general_details"
 
 
   end

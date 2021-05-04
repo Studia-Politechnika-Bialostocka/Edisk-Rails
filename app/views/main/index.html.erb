@@ -1,10 +1,21 @@
-<h1 class="text-center">Welcome to Edisk</h1>
-<% if user_signed_in?%>
-  <%if EdiskDirectory.all.length === 0%>
-    <%puts "dupa" %>
-    <% EdiskDirectory.create(name:"home", path:"/", id:0)%>
-  <%end %>
-<p>
-      <%= button_to "Go to your disk", edisk_directory_path(EdiskDirectory.find(0)), method: :get, class: "btn btn-success"%>
-</p>
-<%end %>
+<header class="header masthead text-center text-white">
+  <div class="masthead-content">
+    <div class="container">
+      <h1 class="masthead-heading mb-0 header-animation">Share your files</h1>
+      <h2 class="masthead-subheading mb-0 header-animation">with the whole world</h2>
+      <%if user_signed_in?%>
+        <a href="#" class="btn btn-primary btn-xl rounded-pill mt-5">Open Drive</a>
+      <%else %>
+        <%= link_to "Create Account", new_user_registration_path, class: "btn btn-primary btn-xl rounded-pill mt-5" %>
+      <%end %>
+    </div>
+  </div>
+  <div class="bg-circle-1 bg-circle"></div>
+  <div class="bg-circle-2 bg-circle"></div>
+  <div class="bg-circle-3 bg-circle"></div>
+  <div class="bg-circle-4 bg-circle"></div>
+</header>
+
+<footer class="footer, py-3 bg-light fixed-bottom">
+    <p class="text-center", style="margin: 0">Made with ❤ by 🧑‍🚀 Mateusz Białowąs |🦸‍♂️ Maciej Bociuk | 👨‍💻 Mateusz Sekściński</p>
+</footer>
