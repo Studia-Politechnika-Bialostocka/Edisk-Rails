@@ -26,7 +26,7 @@
           <th scope="row"><%=currentUser.id %></th>
           <td><%=currentUser.email %></td>
           <td><%=currentUser.username %></td>
-          <td><%= button_to "Delete account",
+          <td><%= link_to "Delete account",
                             admin_dashboard2_path(currentUser.id),
                             method: :delete,
                             data: {confirm:'Are you sure?'},
