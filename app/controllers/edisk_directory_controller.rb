@@ -1,10 +1,10 @@
 class EdiskDirectoryController < ApplicationController
   before_action :authenticate_user!
-  rescue_from ::ActiveRecord::RecordNotFound, with: :record_not_found
+  # rescue_from ::ActiveRecord::RecordNotFound, with: :record_not_found
 
-  def record_not_found(exception)
-    redirect_to root_path, alert: "Nie istnieje taka strona"
-  end
+  # def record_not_found(exception)
+  #   redirect_to root_path, alert: "Nie istnieje taka strona"
+  # end
 
   def new
     @edisk_directory = current_user.edisk_directories.children_of(params[:format]).new
@@ -39,7 +39,7 @@ class EdiskDirectoryController < ApplicationController
     temp1 = @edisk_directory.parent_id
     @edisk_directory.destroy
 
-    redirect_to edisk_directory_path(temp1)
+    redirect_to edisk_directory_path(temp1), notice: "Sucesfully destroyed"
   end
 
   def show
@@ -51,6 +51,5 @@ class EdiskDirectoryController < ApplicationController
   def edisk_directory_params
     params.permit(:name, :path, :parent_id, :ancestry, :user_id)
   end
-
 
   end
