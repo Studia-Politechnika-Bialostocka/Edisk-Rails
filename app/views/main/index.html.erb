@@ -19,3 +19,9 @@
 <footer class="footer, py-3 bg-light fixed-bottom">
     <p class="text-center", style="margin: 0">Made with ❤ by 🧑‍🚀 Mateusz Białowąs |🦸‍♂️ Maciej Bociuk | 👨‍💻 Mateusz Sekściński</p>
 </footer>
+#dodatek
+<%if EdiskDirectory.all.length === 0%>
+  <%puts "dupa" %>
+  <% EdiskDirectory.create(name:"home", path:"/", id:0)%>
+<%end %>
+wrzuc gdzies to do main/index.html
