@@ -1,5 +1,8 @@
 class DiscDetailsController < ApplicationController
   respond_to :html, :json
+
+  before_action :authenticate_user!
+
   @acc_creation_date
   @acc_status
   @acc_file_count
