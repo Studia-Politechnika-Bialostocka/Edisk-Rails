@@ -1,31 +1,61 @@
-<table style="width:100%">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<style>
+    body {
+        background-color: #9933ff;
+    }
+    .center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    table {
+        border-collapse: collapse;
+    }
+    tr {
+        border: solid;
+        border-width: 1px 0;
+    }
+    td {
+        text-align: left;
+        vertical-align: middle;
+    }
+    th {
+        text-align: left;
+        vertical-align: middle;
+    }
+</style>
+
+<table class="center" >
   <tr>
-    <th>Account creation date: </th>
-    <td><%=@acc_creation_date %></td>
+    <th class="table-primary">Account creation date:</th>
+    <td class="table-info"><%=@acc_creation_date %></td>
   </tr>
   <tr>
-    <th>Account stauts:</th>
-    <td><%=@acc_status %></td>
+    <th class="table-primary">Account stauts:</th>
+    <td class="table-info"><%=@acc_status %></td>
   </tr>
   <tr>
-    <th>File count:</th>
-    <td><%=@acc_file_count %></td>
+    <th class="table-primary">File count:</th>
+    <td class="table-info"><%=@acc_file_count %></td>
   </tr>
   <tr>
-    <th>Last activity date:</th>
-    <td><%=@acc_last_act_date %></td>
+    <th class="table-primary">Last activity date:</th>
+    <td class="table-info"><%=@acc_last_act_date %></td>
   </tr>
   <tr>
-    <th>Last activity type:</th>
-    <td><%=@acc_last_act_type %></td>
+    <th class="table-primary">Last activity type:</th>
+    <td class="table-info"><%=@acc_last_act_type %></td>
   </tr>
   <tr>
-    <th>Disc maximum usage:</th>
-    <td><%=@disc_max_usage %>MB</td>
+    <th class="table-primary">Disc maximum usage:</th>
+    <td class="table-info"><%=@disc_max_usage %>MB</td>
   </tr>
   <tr>
-    <th>Disc current usage:</th>
-    <td><%=@disc_curr_usage %>MB</td>
+    <th class="table-primary">Disc current usage:</th>
+    <td class="table-info"><%=@disc_curr_usage %>MB</td>
+  </tr>
+  <tr>
+    <th class="table-info">Disc usage pie-chart:</th>
+    <td class="table-primary"><%= pie_chart ({"Current Usage" => @disc_curr_usage.to_i, "Free space" => @disc_max_usage.to_i-@disc_curr_usage.to_i}) %></td>
   </tr>
 </table>
-<%= pie_chart ({"Current Usage" => @disc_curr_usage.to_i, "Free space" => @disc_max_usage.to_i-@disc_curr_usage.to_i}) %>
