@@ -31,7 +31,8 @@ Rails.application.routes.draw do
     get "/user_details", to: "disc_details#general_details", as: :details_of_user
     post "/user_details" => "disc_details#general_details"
 
-
+    # error for edisk_directory
+    get "/error", to: "edisk_directory#wrong_id", as: :wrong_id
   end
 
   # get "edisk_directory/:id/new", to: "edisk_directory#new"

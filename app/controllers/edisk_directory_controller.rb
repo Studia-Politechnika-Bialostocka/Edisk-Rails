@@ -1,11 +1,12 @@
 class EdiskDirectoryController < ApplicationController
   before_action :authenticate_user!
-  # rescue_from ::ActiveRecord::RecordNotFound, with: :record_not_found
+  #start
+  rescue_from ::ActiveRecord::RecordNotFound, with: :record_not_found
 
-  # def record_not_found(exception)
-  #   redirect_to root_path, alert: "Nie istnieje taka strona"
-  # end
-
+   def record_not_found(exception)
+     redirect_to wrong_id_path, alert: "Nie istnieje taka strona, bledne id"
+   end
+  #koniec
   def new
     @edisk_directory = current_user.edisk_directories.children_of(params[:format]).new
   end
