@@ -7,8 +7,6 @@ class EdiskDirectory < ApplicationRecord
   has_ancestry
 
   def ancestry_into_array
-    puts ancestry
-    puts "hhihihih-------------------------------------"
     a = ancestry.to_s.split("/")
     @text = ""
     a.each do |temp|

@@ -1,4 +1,10 @@
 class ApplicationController < ActionController::Base
+  before_action :is_there_base_directory?
+  def is_there_base_directory?
+    if EdiskDirectory.all.empty?
+      EdiskDirectory.create(id: 0, name: "home", path:"/")
+    end
+  end
   respond_to :html, :json
 
 
