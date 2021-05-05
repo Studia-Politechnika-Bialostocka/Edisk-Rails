@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
       EdiskDirectory.create(id: 0, name: "home", path:"/")
     end
   end
+
   respond_to :html, :json
 
 
