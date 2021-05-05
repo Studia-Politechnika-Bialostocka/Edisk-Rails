@@ -1,8 +1,6 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
 <style>
     body {
-        background-color: #9933ff;
+        background-color: #99d6ff;
     }
     .center {
         margin-left: auto;
@@ -13,7 +11,7 @@
     }
     tr {
         border: solid;
-        border-width: 1px 0;
+        border-width: 1px 1px 1px;
     }
     td {
         text-align: left;
@@ -25,37 +23,61 @@
     }
 </style>
 
-<table class="center" >
-  <tr>
-    <th class="table-primary">Account creation date:</th>
-    <td class="table-info"><%=@acc_creation_date %></td>
-  </tr>
-  <tr>
-    <th class="table-primary">Account stauts:</th>
-    <td class="table-info"><%=@acc_status %></td>
-  </tr>
-  <tr>
-    <th class="table-primary">File count:</th>
-    <td class="table-info"><%=@acc_file_count %></td>
-  </tr>
-  <tr>
-    <th class="table-primary">Last activity date:</th>
-    <td class="table-info"><%=@acc_last_act_date %></td>
-  </tr>
-  <tr>
-    <th class="table-primary">Last activity type:</th>
-    <td class="table-info"><%=@acc_last_act_type %></td>
-  </tr>
-  <tr>
-    <th class="table-primary">Disc maximum usage:</th>
-    <td class="table-info"><%=@disc_max_usage %>MB</td>
-  </tr>
-  <tr>
-    <th class="table-primary">Disc current usage:</th>
-    <td class="table-info"><%=@disc_curr_usage %>MB</td>
-  </tr>
-  <tr>
-    <th class="table-info">Disc usage pie-chart:</th>
-    <td class="table-primary"><%= pie_chart ({"Current Usage" => @disc_curr_usage.to_i, "Free space" => @disc_max_usage.to_i-@disc_curr_usage.to_i}) %></td>
-  </tr>
-</table>
+<div>
+  <table class="center">
+    <tr>
+      <th colspan="2">Details of your disc:</th>
+    </tr>
+    <tr>
+      <th class="table-primary">Account creation date:</th>
+      <td class="table-info"><%=@acc_creation_date %></td>
+    </tr>
+    <tr>
+      <th class="table-primary">Account stauts:</th>
+      <td class="table-info"><%=@acc_status %></td>
+    </tr>
+    <tr>
+      <th class="table-primary">File count:</th>
+      <td class="table-info"><%=@acc_file_count %></td>
+    </tr>
+    <tr>
+      <th class="table-primary">Last activity date:</th>
+      <td class="table-info"><%=@acc_last_act_date %></td>
+    </tr>
+    <tr>
+      <th class="table-primary">Last activity type:</th>
+      <td class="table-info"><%=@acc_last_act_type %></td>
+    </tr>
+    <tr>
+      <th class="table-primary">Disc maximum usage:</th>
+      <td class="table-info"><%=@disc_max_usage %>MB</td>
+    </tr>
+    <tr>
+      <th class="table-primary">Disc current usage:</th>
+      <td class="table-info"><%=@disc_curr_usage %>MB</td>
+    </tr>
+    <tr>
+      <th colspan="2"> Disc usage pie-chart:</th>
+    </tr>
+    <tr>
+      <td colspan="2" class="table-info"><%= pie_chart ({"Current Usage" => @disc_curr_usage.to_i, "Free space" => @disc_max_usage.to_i-@disc_curr_usage.to_i}) %></td>
+    </tr>
+    <tr>
+      <th colspan="2">Links for your usage:</th>
+    </tr>
+    <tr>
+      <th class="table-active">Go to edition of login data:</th>
+      <!--<td><%= link_to current_user.username, edit_user_registration_path, class: "nav-link px-5 username" %></td>-->
+      <td style="background-color:#F0F8FF"><%= link_to "Edit your login data", "/edit" %></td>
+    </tr>
+    <tr>
+      <th class="table-active">Go to your disc:</th>
+
+      <td style="background-color:#F0F8FF"></td>
+    </tr>
+  </table>
+</div>
+
+
+
+

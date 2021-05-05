@@ -1,5 +1,8 @@
 class DiscDetailsController < ApplicationController
   respond_to :html, :json
+
+  before_action :authenticate_user!
+
   @acc_creation_date
   @acc_status
   @acc_file_count
@@ -36,15 +39,15 @@ class DiscDetailsController < ApplicationController
      end
   end
 
-  def current_usage
+  def current_usage #w mb
     1
   end
 
-  def file_count
+  def file_count #w sztukach
     0
   end
 
-  def max_usage
+  def max_usage #gdzies zdefiniowane
     10
   end
 
