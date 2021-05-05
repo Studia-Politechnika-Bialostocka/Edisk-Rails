@@ -82,3 +82,6 @@ gem "letter_opener", :group => :development
 gem 'chartkick'
 #data segregation
 gem 'groupdate'
+
+#Active Storage https://edgeguides.rubyonrails.org/active_storage_overview.html
+gem "azure-storage-blob", require: false
