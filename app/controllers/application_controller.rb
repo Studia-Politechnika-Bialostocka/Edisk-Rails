@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :is_there_base_directory?
   def is_there_base_directory?
-    if EdiskDirectory.all.empty? || EdiskDirectory.exists?(0)
+    if EdiskDirectory.all.empty? ||EdiskDirectory.exists?(0)
       EdiskDirectory.create(id: 0, name: "home", path:"/")
     end
   end
