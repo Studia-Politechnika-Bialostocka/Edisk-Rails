@@ -1,3 +1,5 @@
+import Rails from '@rails/ujs';
+Rails.start();
 
 /* eslint no-console:0 */
 // This file is automatically compiled by Webpack, along with any other files
@@ -19,7 +21,7 @@ import "chartkick/chart.js"
 const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-console.log('Hello World from Webpacker')
+console.log('tttt')
 
 import '../styles/site.scss'
 import '../styles/navbarmain.scss'
