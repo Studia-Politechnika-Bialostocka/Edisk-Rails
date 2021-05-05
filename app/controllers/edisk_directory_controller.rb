@@ -5,7 +5,6 @@ class EdiskDirectoryController < ApplicationController
   # def record_not_found(exception)
   #   redirect_to root_path, alert: "Nie istnieje taka strona"
   # end
-
   def new
     @edisk_directory = current_user.edisk_directories.children_of(params[:format]).new
   end
