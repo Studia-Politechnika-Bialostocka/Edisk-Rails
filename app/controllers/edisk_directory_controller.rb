@@ -1,5 +1,11 @@
 class EdiskDirectoryController < ApplicationController
   before_action :authenticate_user!
+
+  helper_method :return_all_files_from_directory
+
+  def return_all_files_from_directory(ed)
+    @edisk_file = EdiskFile.where(edisk_directory_id: ed.id)
+  end
   # rescue_from ::ActiveRecord::RecordNotFound, with: :record_not_found
 
   # def record_not_found(exception)

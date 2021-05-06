@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_04_195802) do
+ActiveRecord::Schema.define(version: 2021_05_05_210702) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(version: 2021_05_04_195802) do
     t.string "ancestry"
     t.index ["ancestry"], name: "index_edisk_directories_on_ancestry"
     t.index ["user_id"], name: "index_edisk_directories_on_user_id"
+  end
+
+  create_table "edisk_files", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "edisk_directory_id"
+    t.integer "ed_id"
   end
 
   create_table "users", force: :cascade do |t|
