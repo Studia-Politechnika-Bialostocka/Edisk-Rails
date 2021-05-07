@@ -3,6 +3,24 @@ class EdiskDirectoryController < ApplicationController
 
   helper_method :return_all_files_from_directory
 
+  #wrzutka testowa
+  before_action :set_breadcrumbs
+
+  def add_breadcrumbs(label, path = nil)
+    @breadcrumbs << {
+      label: label,
+      path: path
+    }
+  end
+
+  def set_breadcrumbs
+    @breadcrumbs = []
+  end
+
+
+  # koneic wrzutki
+
+
   def return_all_files_from_directory(ed)
     @edisk_file = EdiskFile.where(edisk_directory_id: ed.id)
   end
@@ -50,6 +68,20 @@ class EdiskDirectoryController < ApplicationController
   def show
     @edisk_directory = EdiskDirectory.find(params[:id])
     @edisk_directories = EdiskDirectory.children_of(@edisk_directory).where(user_id: current_user.id)
+
+    #wrztuka
+    add_breadcrumbs('Edisc Main Page', "/edisk_directory/0")
+    add_breadcrumbs(@edisk_directory.name)
+    @test = EdiskDirectory.ancestors_of(@edisk_directory)
+    #if !test.name.nil?
+
+    #end
+
+    # !@edisk_directory.parent_id.nil? do
+    #  add_breadcrumbs(@test.name)
+    #  @test = EdiskDirectory.parent_of(@edisk_directory).where(user_id: current_user.id)
+    #end
+    # koniec
   end
 
   private
