@@ -1,12 +1,11 @@
 class EdiskFileController < ApplicationController
 
-
   def new
-    @edisk_directory = EdiskDirectory.find(params[:format])
+    @edisk_directory = EdiskDirectory.where(user_id: current_user.id).find(params[:format])
     @edisk_file = @edisk_directory.edisk_files.new
   end
   def create
-    @edisk_directory = EdiskDirectory.find(params[:ed_id])
+    @edisk_directory = EdiskDirectory.where(user_id: current_user.id).find(params[:ed_id])
     @edisk_file = @edisk_directory.edisk_files.new(edisk_file_params)
     if @edisk_file.save
       redirect_to edisk_directory_path(@edisk_directory),  notice: "Succesfully created"
@@ -40,7 +39,7 @@ class EdiskFileController < ApplicationController
 
   private
   def edisk_file_params
-    params.permit(:name, :avatar, :ed_id)
+    params.permit(:name, :avatar, :ed_id, :userID)
   end
 
 end

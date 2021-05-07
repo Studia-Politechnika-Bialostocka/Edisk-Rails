@@ -2,7 +2,15 @@ class EdiskDirectoryController < ApplicationController
   before_action :authenticate_user!
   # rescue_from ::ActiveRecord::RecordNotFound, with: :record_not_found
   helper_method :return_all_files_from_directory, :is_there_base_directory2?
+  after_action :count_Size_for_user
 
+  def count_Size_for_user
+    temp = 0
+    EdiskFile.where(userID: current_user.id).each do |f|
+      temp += f.avatar.byte_size
+    end
+    current_user.update_attribute :current_size, temp
+  end
   #wrzutka testowa
   before_action :set_breadcrumbs
 
