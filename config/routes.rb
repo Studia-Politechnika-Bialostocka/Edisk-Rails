@@ -45,9 +45,7 @@ Rails.application.routes.draw do
   post "/edisk_directory/:id/edit", to:"edisk_directory#update"
   resources :edisk_file
   post "/edisk_file/new", to: "edisk_file#create"
-  # get "edisk_directory/:id", to: "edisk_directory#show"
-  # post "edisk_directories/:id", to:"edisk_directory#index"
-  # get "/:path/edisk_directory_edit", to: "edisk_directory#edit"
+  post "/edisk_file/:id/edit", to:"edisk_file#update"
 
   # admin
   as :admin do

@@ -1,7 +1,7 @@
 class EdiskDirectoryController < ApplicationController
   before_action :authenticate_user!
-
-  helper_method :return_all_files_from_directory
+  # rescue_from ::ActiveRecord::RecordNotFound, with: :record_not_found
+  helper_method :return_all_files_from_directory, :is_there_base_directory2?
 
   #wrzutka testowa
   before_action :set_breadcrumbs
@@ -24,7 +24,14 @@ class EdiskDirectoryController < ApplicationController
   def return_all_files_from_directory(ed)
     @edisk_file = EdiskFile.where(edisk_directory_id: ed.id)
   end
-  # rescue_from ::ActiveRecord::RecordNotFound, with: :record_not_found
+
+  def is_there_base_directory2?
+    if user_signed_in?
+      if !EdiskDirectory.where(user_id: current_user.id).exists?(name: "home", ancestry: nil)
+        current_user.edisk_directories.create(name:"home", ancestry: nil)
+      end
+    end
+  end
 
   # def record_not_found(exception)
   #   redirect_to root_path, alert: "Nie istnieje taka strona"
@@ -35,34 +42,33 @@ class EdiskDirectoryController < ApplicationController
 
   def create
     @edisk_directory = current_user.edisk_directories.children_of(params[:parent_id]).new(edisk_directory_params)
-    temp1 = EdiskDirectory.find(@edisk_directory.parent_id)
+    actual_dir = EdiskDirectory.find(@edisk_directory.parent_id)
     if @edisk_directory.save
-      redirect_to edisk_directory_path(temp1),  notice: "Succesfully created"
+      redirect_to edisk_directory_path(actual_dir),  notice: "Succesfully created"
     else
       redirect_to new_edisk_directory_path(params[:parent_id]), alert: "Name can't be blank"
     end
   end
 
   def edit
-
     @edisk_directory = EdiskDirectory.find(params[:id])
   end
   def update
       @edisk_directory = EdiskDirectory.find(params[:id])
-      temp1 = EdiskDirectory.find(@edisk_directory.parent_id)
+      actual_dir = EdiskDirectory.find(@edisk_directory.parent_id)
 
       if @edisk_directory.update(edisk_directory_params)
-        redirect_to edisk_directory_path(temp1), notice: "Succesfully created"
+        redirect_to edisk_directory_path(actual_dir), notice: "Succesfully created"
       else
         redirect_to edit_edisk_directory_path(@edisk_directory), alert: "Name can't be blank"
   end
   end
   def destroy
     @edisk_directory = EdiskDirectory.find(params[:id])
-    temp1 = @edisk_directory.parent_id
+    actual_dir = @edisk_directory.parent_id
     @edisk_directory.destroy
 
-    redirect_to edisk_directory_path(temp1), notice: "Sucesfully destroyed"
+    redirect_to edisk_directory_path(actual_dir), notice: "Sucesfully destroyed"
   end
 
   def show

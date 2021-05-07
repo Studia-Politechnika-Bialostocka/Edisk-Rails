@@ -82,3 +82,4 @@ gem "letter_opener", :group => :development
 gem 'chartkick'
 #data segregation
 gem 'groupdate'
+gem 'image_processing', '~> 1.2'
