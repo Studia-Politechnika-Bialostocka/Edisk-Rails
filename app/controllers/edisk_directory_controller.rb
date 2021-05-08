@@ -46,6 +46,8 @@ class EdiskDirectoryController < ApplicationController
   # end
   def new
     @edisk_directory = current_user.edisk_directories.children_of(params[:format]).new
+
+    @test = EdiskDirectory.ancestors_of(@edisk_directory)
   end
 
   def create
@@ -84,18 +86,26 @@ class EdiskDirectoryController < ApplicationController
     @edisk_directories = EdiskDirectory.children_of(@edisk_directory).where(user_id: current_user.id)
 
     #wrztuka
-    add_breadcrumbs('Edisc Main Page', "/edisk_directory/0")
-    add_breadcrumbs(@edisk_directory.name)
-    @test = EdiskDirectory.ancestors_of(@edisk_directory)
-    #if !test.name.nil?
-
-    #end
-
-    # !@edisk_directory.parent_id.nil? do
-    #  add_breadcrumbs(@test.name)
-    #  @test = EdiskDirectory.parent_of(@edisk_directory).where(user_id: current_user.id)
-    #end
-    # koniec
+    @curr_path
+    @rev_bread = ""
+    @mini_root = @edisk_directory
+    while !@mini_root.parent_id.nil? do
+      @rev_bread = @mini_root.name + @rev_bread
+      @rev_bread = "/" + @rev_bread
+      @mini_root = @mini_root.parent
+    end
+    add_breadcrumbs('My disc', "/edisk_directory/"+@mini_root.id.to_s) #strona uzytkownika
+    @abc = @rev_bread.split('/')
+    @abc.each_index do |x|
+      if !@abc[x].eql? ""
+        @curr_id = EdiskDirectory.where(name: @abc[x], user_id: current_user.id)
+        @curr_ids = @curr_id.ids.to_s
+        @curr_ids[0] = ''
+        @curr_ids = @curr_ids.chomp("]")
+        @curr_path = "/edisk_directory/"+@curr_ids
+        add_breadcrumbs(@abc[x], @curr_path)
+      end
+    end
   end
 
   private

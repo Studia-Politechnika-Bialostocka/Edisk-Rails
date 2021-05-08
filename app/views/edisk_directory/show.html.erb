@@ -4,8 +4,8 @@
         margin-right: auto;
     }
 </style>
-vhuj <%= @test.name %> chuj
- <% @temp = EdiskDirectory.find(params[:id]) %>
+
+<% @temp = EdiskDirectory.find(params[:id]) %>
 <%#if @temp.id === 0%>
 <%#= link_to @temp.name, edisk_directory_path(@temp), method: :get %>
 <%# else%>
@@ -68,7 +68,6 @@ vhuj <%= @test.name %> chuj
         <div class="card-header">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="/">Main page</a></li>
               <% @breadcrumbs.each do |breadcrumb| %>
                 <% if breadcrumb[:path].nil? %>
                   <li class="beadcrump-item active" aria-current="page">
