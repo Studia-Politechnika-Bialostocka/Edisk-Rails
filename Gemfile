@@ -83,3 +83,6 @@ gem 'chartkick'
 #data segregation
 gem 'groupdate'
 gem 'image_processing', '~> 1.2'
+
+#Active Storage https://edgeguides.rubyonrails.org/active_storage_overview.html
+gem "azure-storage-blob", require: false
