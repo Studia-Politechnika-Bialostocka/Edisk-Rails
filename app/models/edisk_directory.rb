@@ -2,7 +2,8 @@ class EdiskDirectory < ApplicationRecord
 
   belongs_to :user, optional: true
   has_many :edisk_files, dependent: :destroy
-  validates :name, presence:true, uniqueness: {scope: [:ancestry, :user_id]}
+  validates :name, presence: true
+  validates :name, uniqueness: {scope: [:ancestry,  :user_id], message: :ll}
   has_ancestry
 
   def ancestry_into_array

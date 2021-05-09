@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   after_action :is_there_base_directory2?
 
-
   def is_there_base_directory2?
     if user_signed_in?
       if !EdiskDirectory.where(user_id: current_user.id).exists?(name: "home", ancestry: nil)

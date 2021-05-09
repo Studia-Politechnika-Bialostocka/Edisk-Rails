@@ -54,9 +54,9 @@ class EdiskDirectoryController < ApplicationController
     @edisk_directory = current_user.edisk_directories.children_of(params[:parent_id]).new(edisk_directory_params)
     actual_dir = EdiskDirectory.find(@edisk_directory.parent_id)
     if @edisk_directory.save
-      redirect_to edisk_directory_path(actual_dir),  notice: "Succesfully created"
+      redirect_to edisk_directory_path(actual_dir)
     else
-      redirect_to new_edisk_directory_path(params[:parent_id]), alert: "Name can't be blank"
+      redirect_to new_edisk_directory_path(params[:parent_id])
     end
   end
 
@@ -68,9 +68,9 @@ class EdiskDirectoryController < ApplicationController
       actual_dir = EdiskDirectory.find(@edisk_directory.parent_id)
 
       if @edisk_directory.update(edisk_directory_params)
-        redirect_to edisk_directory_path(actual_dir), notice: "Succesfully created"
+        redirect_to edisk_directory_path(actual_dir)
       else
-        redirect_to edit_edisk_directory_path(@edisk_directory), alert: "Name can't be blank"
+        redirect_to edit_edisk_directory_path(@edisk_directory)
   end
   end
   def destroy

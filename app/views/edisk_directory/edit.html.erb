@@ -1,9 +1,18 @@
 <h5>Edit directory </h5>
 <section class="col-8 offset-2 col-sm-6 offset-sm-3">
-<%= form_with(model: @edisk_directories, local: true) do |f| %>
+<%= form_with model: @edisk_directories do |f| %>
   <div class="field, form-group">
     <%= f.label :name %>
     <%= f.text_field :name, autofocus: true, value: @edisk_directory.name, class: "form-control mb-2"%>
+    <% if @edisk_directory.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+          <% @edisk_directory.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   </div>
 <% %>
   <div>
