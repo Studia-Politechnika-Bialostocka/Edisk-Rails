@@ -28,7 +28,6 @@ class EdiskFileController < ApplicationController
   def destroy
     @edisk_file = EdiskFile.find(params[:id])
     actual_dir = @edisk_file.ed_id
-    @edisk_file.avatar.purge
     @edisk_file.destroy
     redirect_to edisk_directory_path(actual_dir), notice: "Sucesfully destroyed"
   end
@@ -39,7 +38,7 @@ class EdiskFileController < ApplicationController
 
   private
   def edisk_file_params
-    params.permit(:name, :avatar, :ed_id, :userID)
+    params.permit(:name, :avatar, :ed_id, :user_id)
   end
 
 end

@@ -8,7 +8,7 @@ class EdiskFile < ApplicationRecord
   def acceptable_image
     return unless avatar.attached?
 
-    unless avatar.byte_size <= (User.find(userID).ediskSize-User.find(userID).current_size)
+    unless avatar.byte_size <= (User.find(user_id).ediskSize-User.find(user_id).current_size)
       errors.add(:avatar, "is too big")
     end
   end

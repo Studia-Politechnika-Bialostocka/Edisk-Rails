@@ -85,4 +85,4 @@ gem 'groupdate'
 # gem 'image_processing'
 
 gem "azure-storage-blob", require: false
-gem "mini_magick"
+gem "image_processing"

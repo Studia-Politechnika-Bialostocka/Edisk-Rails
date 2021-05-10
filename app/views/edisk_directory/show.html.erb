@@ -17,7 +17,7 @@
         document.execCommand("copy");
 
         /* Alert the copied text */
-        alert("Copied the text: " + copyText.value);
+        // alert("Copied the text: " + copyText.value);
     }
 </script>
 
@@ -233,7 +233,7 @@
                 <%= button_to "Edit", edit_edisk_file_path(post), method: :get, class: "btn btn-primary btn-sm"%>
                 <%= button_to "Destroy", edisk_file_path(post), method: :delete, data: {confirm: "Are you sure?"},class: "btn btn-danger btn-sm"%>
                 <p><%="Link to file"%></p>
-                <%= text_field_tag :myInput, "#{rails_blob_path(post.avatar, disposition: "preview")}", disabled:true %>
+                <%= text_field_tag "myInput", "#{rails_blob_path(post.avatar, disposition: "preview")}" %>
                 <button onclick="myFunction()">Copy text</button>
               </div>
             </div>

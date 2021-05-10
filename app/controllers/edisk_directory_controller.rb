@@ -6,7 +6,7 @@ class EdiskDirectoryController < ApplicationController
 
   def count_Size_for_user
     temp = 0
-    EdiskFile.where(userID: current_user.id).each do |f|
+    EdiskFile.where(user_id: current_user.id).each do |f|
       temp += f.avatar.byte_size
     end
     current_user.update_attribute :current_size, temp
