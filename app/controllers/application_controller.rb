@@ -1,26 +1,6 @@
 class ApplicationController < ActionController::Base
   after_action :is_there_base_directory2?
 
-  protected
-
-  module DevisePermittedParameters
-
-    extend ActiveSupport::Concern
-
-    included do
-      before_action :configure_permitted_parameters
-    end
-
-    protected
-
-    def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:current_size])
-      devise_parameter_sanitizer.permit(:account_update, keys: [:current_size])
-    end
-
-  end
-
-  DeviseController.send :include, DevisePermittedParameters
 
   def is_there_base_directory2?
     if user_signed_in?

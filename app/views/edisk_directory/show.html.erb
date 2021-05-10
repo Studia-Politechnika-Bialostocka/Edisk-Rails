@@ -4,6 +4,22 @@
         margin-right: auto;
     }
 </style>
+<script>
+    function myFunction() {
+        /* Get the text field */
+        var copyText = document.getElementById("myInput");
+
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+
+        /* Alert the copied text */
+        alert("Copied the text: " + copyText.value);
+    }
+</script>
 
 <% @temp = EdiskDirectory.find(params[:id]) %>
 <%#if @temp.id === 0%>
@@ -174,27 +190,51 @@
   <% return_all_files_from_directory(@temp).each_slice(3) do |directory| %>
     <div class="row">
       <% directory.each  do |post| %>
-        <% if post.avatar.representable?%>
-          <% end %>
         <div class="col-sm-6 col-lg-4">
           <div class="card" style="width: 15rem;">
-            <% if post.avatar.representable? %>
-              <picture>
-                <%= image_tag url_for(post.avatar), class:"card-img-top", style:"max-height: 300px; max-width: 300px;"%>
-              </picture>
+
+<!--            <picture>-->
+
+<!--            <img class="card-img-top"-->
+
+            <%#if post.avatar.variant? %>
+              <%#= image_tag url_for(post.avatar.variant(format: 'jpg')), class:"card-img-top", style:"max-height: 300px; max-width: 300px;"%>
+            <%#end %>
+
+            <%if post.avatar.previewable? %>
+              <%= image_tag url_for(post.avatar.preview(resize_to_limit: [300, 300])), class:"card-img-top"%>
+           <%#elsif post.avatar.representable?%>
+                <%#= image_tag url_for(post.avatar.representation(resize_to_limit: [100, 100])), class:"card-img-top" %>
             <% else %>
-              <%= link_to rails_blob_path(post.avatar, disposition: "attachment") do %>
-                <%= image_tag "https://cdn.discordapp.com/attachments/693201051846836335/836270545641275492/vzLY25G.jpg", alt: "Download file", class: "card-img-top", style:"max-height: 300px; max-width: 300px;" %>
-              <%end %>
-            <%end %>
+                <%= link_to rails_blob_path(post.avatar, disposition: "attachment") do %>
+                <%= image_tag "#{post.pic_for_type}", alt: "Download file", class: "card-img-top", style:"max-height: 300px; max-width: 300px;" %>
+                <%end %>
+
+                <!--              <iframe src="<%#= rails_blob_path(post.avatar, disposition: :inline) %>" height="200" width="300"></iframe>-->
+          <%end %>
+<!--            >-->
+<!--            </picture>-->
+
+                  <%#= image_tag(user.document.representation(resize: '200x200')) %>
+                <%#= image_tag url_for(post.avatar.representation), %>
+            <%# else %>
+              <%#= link_to rails_blob_path(post.avatar.preview, disposition: "attachment") do %>
+                <%#= image_tag "https://cdn.discordapp.com/attachments/693201051846836335/836270545641275492/vzLY25G.jpg", alt: "Download file", class: "card-img-top", style:"max-height: 300px; max-width: 300px;" %>
+              <%#end %>
+            <%#end %>
 
             <div class="card-body">
 
-              <h5 class="card-title"><%=link_to post.name, url_for(post.avatar)%></h5>
+<!--              <h5 class="card-title"><%#=link_to post.name, url_for(post.avatar)%></h5>-->
+              <%#=Rails.application.routes.url_helpers.rails_blob_path(post.avatar, only_path: true) %>
+<!--              <h5 class="card-title"><%#=link_to post.name, rails_blob_path(post.avatar, disposition: :preview)%></h5>-->
+              <h5 class="card-title"> <%=link_to post.name, post.avatar %></h5>
               <div>
-
                 <%= button_to "Edit", edit_edisk_file_path(post), method: :get, class: "btn btn-primary btn-sm"%>
                 <%= button_to "Destroy", edisk_file_path(post), method: :delete, data: {confirm: "Are you sure?"},class: "btn btn-danger btn-sm"%>
+                <p><%="Link to file"%></p>
+                <%= text_field_tag :myInput, "#{rails_blob_path(post.avatar, disposition: "preview")}", disabled:true %>
+                <button onclick="myFunction()">Copy text</button>
               </div>
             </div>
           </div>

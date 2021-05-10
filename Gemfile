@@ -82,7 +82,7 @@ gem "letter_opener", :group => :development
 gem 'chartkick'
 #data segregation
 gem 'groupdate'
-gem 'image_processing', '~> 1.2'
+# gem 'image_processing'
 
-#Active Storage https://edgeguides.rubyonrails.org/active_storage_overview.html
 gem "azure-storage-blob", require: false
+gem "mini_magick"

@@ -10,7 +10,7 @@ class EdiskFileController < ApplicationController
     if @edisk_file.save
       redirect_to edisk_directory_path(@edisk_directory),  notice: "Succesfully created"
     else
-      redirect_to root_path, alert: "Name can't be blank"
+      redirect_to new_edisk_file_path(params[:ed_id]), notice: "dafuq"
     end
   end
   def edit
@@ -22,7 +22,7 @@ class EdiskFileController < ApplicationController
     if @edisk_file.update(edisk_file_params)
       redirect_to edisk_directory_path(actual_dir), notice: "Successfully created"
     else
-      redirect_to edit_edisk_directory_path(@edisk_file), alert: "Name can't be blank"
+      redirect_to edit_edisk_file_path(@edisk_file)
     end
   end
   def destroy
@@ -33,7 +33,7 @@ class EdiskFileController < ApplicationController
     redirect_to edisk_directory_path(actual_dir), notice: "Sucesfully destroyed"
   end
   # def show
-  #   @edisk_files = EdiskFile.where(edisk_directories_id:)
+  #
   # end
   # EdiskDirectory
 
