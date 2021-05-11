@@ -7,8 +7,8 @@ class EdiskFile < ApplicationRecord
 
   def acceptable_image
     return unless avatar.attached?
-
-    unless avatar.byte_size <= (User.find(user_id).ediskSize-User.find(user_id).current_size)
+    u = User.find(userID)
+    unless avatar.byte_size <= (u.ediskSize-u.current_size)
       errors.add(:avatar, "is too big")
     end
   end
@@ -18,5 +18,5 @@ class EdiskFile < ApplicationRecord
     when 'application/pdf'
       @a = 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Icon-pdf.svg/711px-Icon-pdf.svg.png'
     end
-    end
+  end
 end

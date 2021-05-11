@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_10_092435) do
+ActiveRecord::Schema.define(version: 2021_05_11_095554) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -56,8 +56,7 @@ ActiveRecord::Schema.define(version: 2021_05_10_092435) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "edisk_directory_id"
-    t.integer "ed_id"
-    t.integer "user_id"
+    t.integer "userID"
   end
 
   create_table "users", force: :cascade do |t|
@@ -87,5 +86,4 @@ ActiveRecord::Schema.define(version: 2021_05_10_092435) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "edisk_directories", "users"
   add_foreign_key "edisk_files", "edisk_directories"
-  add_foreign_key "edisk_files", "users"
 end

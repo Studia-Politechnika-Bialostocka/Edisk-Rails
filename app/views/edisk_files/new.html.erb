@@ -1,0 +1,27 @@
+<h5>Create new file </h5>
+<%= form_with model: @edisk_file, url: new_edisk_file_path(format: @query) do |f| %>
+
+<% if @edisk_file.errors.any? %>
+  <div class = "alert alert-danger">
+	  <%@edisk_file.errors.full_messages.each do |message| %>
+	  <div> <%=message %> </div>
+      <%end%>
+  </div>
+<%end%>
+
+  <div>
+    <%= f.label :"Upload file" %>
+    <%= f.file_field :avatar %>
+  </div>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control mb-2" %>
+  </div>
+  <div>
+    <% var = @edisk_file.edisk_directory_id%>
+    <%= hidden_field_tag :direct_id,  "#{var}" %>
+    <%= f.hidden_field :userID, value: current_user.id %>
+  </div>
+  <%= f.submit "Confirm" %>
+
+<% end %>
