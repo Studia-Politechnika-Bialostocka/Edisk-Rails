@@ -1,10 +1,14 @@
 class ApplicationController < ActionController::Base
-  before_action :is_there_base_directory?
-  def is_there_base_directory?
-    if EdiskDirectory.all.empty?
-      EdiskDirectory.create(id: 0, name: "home", path:"/")
+  after_action :is_there_base_directory2?
+
+  def is_there_base_directory2?
+    if user_signed_in?
+      if !EdiskDirectory.where(user_id: current_user.id).exists?(name: "home", ancestry: nil)
+        current_user.edisk_directories.create(name:"home", ancestry: nil)
+      end
     end
   end
+
   respond_to :html, :json
 
 

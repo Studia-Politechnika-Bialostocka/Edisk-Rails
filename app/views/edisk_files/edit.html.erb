@@ -1,0 +1,29 @@
+<h5>Edit file </h5>
+<section class="col-8 offset-2 col-sm-6 offset-sm-3">
+  <%= form_with model: @edisk_file do |f| %>
+
+    <% if @edisk_file.errors.any? %>
+      <div class = "alert alert-danger">
+        <%@edisk_file.errors.full_messages.each do |message| %>
+          <div> <%=message %> </div>
+        <%end%>
+      </div>
+
+    <%end%>
+    <div class="field, form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, autofocus: true, value: @edisk_file.name, class: "form-control mb-2"%>
+    </div>
+
+    <div>
+
+      <%= f.label :path %>
+      <% actual_dir = EdiskDirectory.find(@edisk_file.ed_id) %>
+      <%= f.collection_select :edisk_directory_id, EdiskDirectory.all.where(user_id: current_user.id).excluding(EdiskDirectory.descendants_of(actual_dir.id)), :id, :ancestry_into_array, {:selected => actual_dir.id} %>
+      <%= hidden_field_tag :ed_id,  :edisk_directory_id %>
+    </div>
+
+    <%= f.submit "Confirm" %>
+
+  <% end %>
+</section>

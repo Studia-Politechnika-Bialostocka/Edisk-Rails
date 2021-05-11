@@ -1,0 +1,245 @@
+<style>
+    .center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+<script>
+    function myFunction() {
+        /* Get the text field */
+        var copyText = document.getElementById("myInput");
+
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+
+        /* Alert the copied text */
+        // alert("Copied the text: " + copyText.value);
+    }
+</script>
+
+<% @temp = EdiskDirectory.find(params[:id]) %>
+<%#if @temp.id === 0%>
+<%#= link_to @temp.name, edisk_directory_path(@temp), method: :get %>
+<%# else%>
+<%#parent_temp = EdiskDirectory.find(@temp.parent_id) %>
+<%#= link_to parent_temp.name, edisk_directory_path(parent_temp), method: :get %>
+<%#= " / " %>
+<%#= link_to @temp.name, edisk_directory_path(@temp), method: :get %>
+<%= link_to @temp.name, edisk_directory_path(@temp), method: :get %>
+
+<%#end %>
+
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-body">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-header">
+                  <div>
+                    <table class="center">
+                      <tr>
+                        <td>
+                           Directory panel:
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div>
+                    <p>Add new directory<%=button_to "+", new_edisk_directory_path(@temp), method: :get, class: "btn btn-success btn"%></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-header">
+                  <div>
+                    <table class="center">
+                      <tr>
+                        <td>
+                          File uploading panel:
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div>
+                    <p>Upload file:<%=button_to "+", new_edisk_file_path(@temp), method: :get, class: "btn btn-warning btn"%></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-header">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <% @breadcrumbs.each do |breadcrumb| %>
+                <% if breadcrumb[:path].nil? %>
+                  <li class="beadcrump-item active" aria-current="page">
+                    <%= breadcrumb[:label] %>
+                  </li>
+                <% else %>
+                  <li class="breadcrumb-item">
+                    <%= link_to breadcrumb[:label], breadcrumb[:path] %>
+                  </li>
+               <% end %>
+              <% end %>
+            </ol>
+          </nav>
+        </div>
+        <div class="card-body">
+          <div class="card">
+            <div class="card-body">
+              <div class="container">
+                <% @edisk_directories.each_slice(3) do |directory| %>
+                  <div class="row">
+                    <% directory.each  do |post| %>
+                      <div class="col-sm-6 col-lg-4">
+                        <div class="card" style="width: 15rem;">
+                          <img class="card-img-top" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia1.tenor.com%2Fimages%2Fe0509f24e533d57f6cbb5ea6bfdc230e%2Ftenor.gif%3Fitemid%3D9269896&f=1&nofb=1" alt="Card image cap">
+                          <div class="card-body">
+                            <h5 class="card-title"><%=link_to post.name, edisk_directory_path(post)%></h5>
+                            <div>
+                              <%= button_to "Edit", edit_edisk_directory_path(post), method: :get, class: "btn btn-primary btn-sm"%>
+                              <%= button_to "Destroy", edisk_directory_path(post), method: :delete,data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm"%>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <%end %>
+                  </div>
+                <% end %>
+              </div>
+              <div class="container">
+                <% return_all_files_from_directory(@temp).each_slice(3) do |directory| %>
+                  <div class="row">
+                    <% directory.each  do |post| %>
+                      <div class="col-sm-6 col-lg-4">
+                        <div class="card" style="width: 15rem;">
+                          <img class="card-img-top" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia1.tenor.com%2Fimages%2F7f0849a3d68da136331b9131dd7fb97a%2Ftenor.gif%3Fitemid%3D5456218&f=1&nofb=1" alt="Card image cap">
+                          <div class="card-body">
+                            <h5 class="card-title"><%=link_to post.name, root_path%></h5>
+                            <div>
+                              <%= button_to "Edit", root_path, method: :get, class: "btn btn-primary btn-sm"%>
+                              <%= button_to "Destroy", root_path, method: :get, class: "btn btn-danger btn-sm"%>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <%end %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+#ponizej kodu nie tykalem
+
+<% @temp = EdiskDirectory.find(params[:id]) %>
+<%#if @temp.id === 0%>
+<%#= link_to @temp.name, edisk_directory_path(@temp), method: :get %>
+<%# else%>
+<%#parent_temp = EdiskDirectory.find(@temp.parent_id) %>
+<%#= link_to parent_temp.name, edisk_directory_path(parent_temp), method: :get %>
+<%#= " / " %>
+<%#= link_to @temp.name, edisk_directory_path(@temp), method: :get %>
+<%= link_to @temp.name, edisk_directory_path(@temp), method: :get %>
+
+<%#end %>
+<%#is_there_base_directory2?%>
+<p>Add new directory<%=button_to "+", new_edisk_directory_path(@temp), method: :get, class: "btn btn-success btn"%></p>
+<p>Upload file<%=button_to "+", new_edisk_file_path(@temp), method: :get, class: "btn btn-warning btn"%></p>
+
+<div class="container">
+  <% @edisk_directories.each_slice(3) do |directory| %>
+    <div class="row">
+      <% directory.each  do |post| %>
+        <div class="col-sm-6 col-lg-4">
+          <div class="card" style="width: 15rem;">
+            <img class="card-img-top" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia1.tenor.com%2Fimages%2Fe0509f24e533d57f6cbb5ea6bfdc230e%2Ftenor.gif%3Fitemid%3D9269896&f=1&nofb=1" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title"><%=link_to post.name, edisk_directory_path(post)%></h5>
+              <div>
+                <%= button_to "Edit", edit_edisk_directory_path(post), method: :get, class: "btn btn-primary btn-sm"%>
+                <%= button_to "Destroy", edisk_directory_path(post), method: :delete,data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm"%>
+              </div>
+            </div>
+          </div>
+        </div>
+      <%end %>
+    </div>
+  <% end %>
+</div>
+<div class="container">
+  <% return_all_files_from_directory(@temp).each_slice(3) do |directory| %>
+    <div class="row">
+      <% directory.each  do |post| %>
+        <div class="col-sm-6 col-lg-4">
+          <div class="card" style="width: 15rem;">
+
+<!--            <picture>-->
+
+<!--            <img class="card-img-top"-->
+
+            <%#if post.avatar.variant? %>
+              <%#= image_tag url_for(post.avatar.variant(format: 'jpg')), class:"card-img-top", style:"max-height: 300px; max-width: 300px;"%>
+            <%#end %>
+
+            <%if post.avatar.previewable? %>
+              <%= image_tag url_for(post.avatar.preview(resize_to_limit: [300, 300])), class:"card-img-top"%>
+           <%#elsif post.avatar.representable?%>
+                <%#= image_tag url_for(post.avatar.representation(resize_to_limit: [100, 100])), class:"card-img-top" %>
+            <% else %>
+                <%= link_to rails_blob_path(post.avatar, disposition: "attachment") do %>
+                <%= image_tag "#{post.pic_for_type}", alt: "Download file", class: "card-img-top", style:"max-height: 300px; max-width: 300px;" %>
+                <%end %>
+
+                <!--              <iframe src="<%#= rails_blob_path(post.avatar, disposition: :inline) %>" height="200" width="300"></iframe>-->
+          <%end %>
+<!--            >-->
+<!--            </picture>-->
+
+                  <%#= image_tag(user.document.representation(resize: '200x200')) %>
+                <%#= image_tag url_for(post.avatar.representation), %>
+            <%# else %>
+              <%#= link_to rails_blob_path(post.avatar.preview, disposition: "attachment") do %>
+                <%#= image_tag "https://cdn.discordapp.com/attachments/693201051846836335/836270545641275492/vzLY25G.jpg", alt: "Download file", class: "card-img-top", style:"max-height: 300px; max-width: 300px;" %>
+              <%#end %>
+            <%#end %>
+
+            <div class="card-body">
+
+<!--              <h5 class="card-title"><%#=link_to post.name, url_for(post.avatar)%></h5>-->
+              <%#=Rails.application.routes.url_helpers.rails_blob_path(post.avatar, only_path: true) %>
+<!--              <h5 class="card-title"><%#=link_to post.name, rails_blob_path(post.avatar, disposition: :preview)%></h5>-->
+              <h5 class="card-title"> <%=link_to post.name, post.avatar %></h5>
+              <div>
+                <%= button_to "Edit", edit_edisk_file_path(post), method: :get, class: "btn btn-primary btn-sm"%>
+                <%= button_to "Destroy", edisk_file_path(post), method: :delete, data: {confirm: "Are you sure?"},class: "btn btn-danger btn-sm"%>
+                <p><%="Link to file"%></p>
+                <%= text_field_tag "myInput", "#{rails_blob_path(post.avatar, disposition: "preview")}" %>
+                <button onclick="myFunction()">Copy text</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      <%end %>
+    </div>
+  <% end %>
+</div>

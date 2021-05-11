@@ -40,13 +40,15 @@ Rails.application.routes.draw do
   # post "edisk_directory/:id/edit", to: "edisk_directory#update"
 
   # delete "edisk_directories/:id/destroy", to:"edisk_directory#destroy"
-  resources :edisk_directory
-  post "edisk_directory/new", to: "edisk_directory#create"
-  post "/edisk_directory/:id/edit", to:"edisk_directory#update"
+  resources :edisk_directories
+  post "/edisk_directories/new(.:format)", to: "edisk_directories#create"
+  # post "/edisk_directory/new", to: "edisk_directory#create"
+  # post "/edisk_directory/:id", to: "edisk_directory#create"
 
-  # get "edisk_directory/:id", to: "edisk_directory#show"
-  # post "edisk_directories/:id", to:"edisk_directory#index"
-  # get "/:path/edisk_directory_edit", to: "edisk_directory#edit"
+  # post "/edisk_directory/:id/edit", to:"edisk_directory#update"
+  post "/edisk_files/new(.:format)", to: "edisk_files#create"
+  resources :edisk_files
+  # post "/edisk_file/:id/edit", to:"edisk_file#update"
 
   # admin
   as :admin do
