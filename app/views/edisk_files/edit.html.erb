@@ -8,8 +8,8 @@
           <div> <%=message %> </div>
         <%end%>
       </div>
-
     <%end%>
+
     <div class="field, form-group">
       <%= f.label :name %>
       <%= f.text_field :name, autofocus: true, value: @edisk_file.name, class: "form-control mb-2"%>
@@ -20,7 +20,6 @@
       <%= f.label :path %>
       <% actual_dir = EdiskDirectory.find(@edisk_file.edisk_directory_id) %>
       <%= f.collection_select :edisk_directory_id, EdiskDirectory.all.where(user_id: current_user.id).excluding(EdiskDirectory.descendants_of(actual_dir.id)), :id, :ancestry_into_array, {:selected => actual_dir.id} %>
-      <%= hidden_field_tag :ed_id,  :edisk_directory_id %>
     </div>
 
 
