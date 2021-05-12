@@ -1,4 +1,6 @@
 class EdiskFilesController < ApplicationController
+  before_action :authenticate_user!
+  after_action :integrity_on_filename, only: [:create, :update]
 
   def new
     @query = params[:format]
@@ -9,7 +11,6 @@ class EdiskFilesController < ApplicationController
     @query = params[:format]
     @edisk_directory = EdiskDirectory.where(user_id: current_user.id).find(params[:direct_id])
     @edisk_file = @edisk_directory.edisk_files.new(edisk_file_params)
-
     if @edisk_file.save
       redirect_to edisk_directory_path(@edisk_directory),  notice: "Succesfully created"
     else
@@ -40,4 +41,12 @@ class EdiskFilesController < ApplicationController
     params.require(:edisk_file).permit(:name, :avatar, :userID)
   end
 
+  def integrity_on_filename
+    updateID = EdiskFile.where(userID: current_user.id).maximum(:updated_at)
+    #unless (conditional) == if (!conditional)
+    unless updateID.nil?
+        temp = EdiskFile.find_by(userID: current_user.id, updated_at: updateID)
+        temp.avatar.update(filename: temp.name)
+    end
+  end
 end
