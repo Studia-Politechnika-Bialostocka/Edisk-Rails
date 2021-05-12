@@ -21,7 +21,7 @@ class EdiskFilesController < ApplicationController
   end
   def update
     @edisk_file = EdiskFile.find(params[:id])
-    actual_dir = @edisk_file.ed_id
+    actual_dir = @edisk_file.edisk_directory_id
     if @edisk_file.update(edisk_file_params)
       redirect_to edisk_directory_path(actual_dir), notice: "Successfully created"
     else
@@ -30,7 +30,7 @@ class EdiskFilesController < ApplicationController
   end
   def destroy
     @edisk_file = EdiskFile.find(params[:id])
-    actual_dir = @edisk_file.ed_id
+    actual_dir = @edisk_file.edisk_directory_id
     @edisk_file.destroy
     redirect_to edisk_directory_path(actual_dir), notice: "Sucesfully destroyed"
   end
