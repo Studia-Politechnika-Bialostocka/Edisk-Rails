@@ -3,7 +3,7 @@ class EdiskFile < ApplicationRecord
   has_one_attached :avatar, dependent: :destroy
   validates :avatar, presence:true
   validates :name, presence:true, uniqueness: true
-  validate :acceptable_image
+  validate :acceptable_image, :on => :create
 
   def acceptable_image
     return unless avatar.attached?
@@ -17,6 +17,8 @@ class EdiskFile < ApplicationRecord
     case avatar.content_type
     when 'application/pdf'
       @a = 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Icon-pdf.svg/711px-Icon-pdf.svg.png'
+    else
+      @a = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0c%2FFile_alt_font_awesome.svg%2F512px-File_alt_font_awesome.svg.png&f=1&nofb=1'
     end
   end
 end
