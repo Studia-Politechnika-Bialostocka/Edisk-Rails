@@ -1,8 +1,54 @@
 <style>
+  *{
+      box-sizing: border-box;
+  }
+
     .center {
         margin-left: auto;
         margin-right: auto;
     }
+    .card-style{
+        margin: 15px;
+    }
+
+  @media only screen and (min-width: 1201px){
+      .card-style{
+          width: 22%;
+          margin: 10px;
+      }
+  }
+
+
+    @media only screen and (max-width: 1200px){
+        .card-style{
+            width: 30%;
+            margin: 10px;
+        }
+    }
+
+    @media only screen and (max-width: 992px){
+        .card-style{
+            width: 45%;
+            margin: 10px;
+        }
+    }
+
+    @media only screen and (max-width: 576px){
+        .card-style{
+            width: 60%;
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 </style>
 <script>
     function myFunction() {
@@ -23,6 +69,7 @@
 
 <% @temp = EdiskDirectory.find(params[:id]) %>
 <%= link_to @temp.name, edisk_directory_path(@temp), method: :get %>
+
 
 
 <div class="container-fluid">
