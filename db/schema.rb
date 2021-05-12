@@ -75,9 +75,9 @@ ActiveRecord::Schema.define(version: 2021_05_11_095554) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "admin", default: false
-    t.string "username"
     t.integer "ediskSize", default: 11000000
-    t.bigint "current_size"
+    t.integer "current_size"
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
