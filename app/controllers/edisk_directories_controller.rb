@@ -58,7 +58,7 @@ class EdiskDirectoriesController < ApplicationController
       @rev_bread = "/" + @rev_bread
       @mini_root = @mini_root.parent
     end
-    add_breadcrumbs('My disc', "/edisk_directory/"+@mini_root.id.to_s) #strona uzytkownika
+    add_breadcrumbs('My disc', "/edisk_directories/"+@mini_root.id.to_s) #strona uzytkownika
     @abc = @rev_bread.split('/')
     @abc.each_index do |x|
       if !@abc[x].eql? ""
@@ -66,7 +66,7 @@ class EdiskDirectoriesController < ApplicationController
         @curr_ids = @curr_id.ids.to_s
         @curr_ids[0] = ''
         @curr_ids = @curr_ids.chomp("]")
-        @curr_path = "/edisk_directory/"+@curr_ids
+        @curr_path = "/edisk_directories/"+@curr_ids
         add_breadcrumbs(@abc[x], @curr_path)
       end
     end
