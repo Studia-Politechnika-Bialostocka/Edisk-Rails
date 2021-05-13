@@ -20,7 +20,7 @@
         vertical-align: middle;
     }
 </style>
-<%=current_user.username %>
+
 <div class="container-fluid">
   <div class="row flex-nowrap">
     <div class="col py-3">
@@ -65,7 +65,7 @@
               <tr>
                 <th class="table-active">Go to your disc:</th>
                 <td>
-                  <a href="/edisk_directories/0" class="nav-link px-0"> <span style="width: 180px !important; display: inline-block !important;" id="button button2" class="d-none d-sm-inline btn btn-primary mx-3">Go to your disk</span></a>
+                  <a href="<%=@mini_root%>" class="nav-link px-0"> <span style="width: 180px !important; display: inline-block !important;" id="button button2" class="d-none d-sm-inline btn btn-primary mx-3">Go to your disc</span></a>
                 </td>
               </tr>
             </table>

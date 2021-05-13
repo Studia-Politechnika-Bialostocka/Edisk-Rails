@@ -3,19 +3,13 @@ class DiscDetailsController < ApplicationController
 
   before_action :authenticate_user!
 
-  @acc_creation_date
-  @acc_status
-  @acc_file_count
-  @acc_last_act_date
-  @acc_last_act_type
-  @disc_max_usage
-  @disc_curr_usage
-
   @users = User.all
 
   def general_details
     @who_am_i = current_user.username
     @curr_user = User.find_by(username: @who_am_i)
+
+    @mini_root = edisk_directory_path(EdiskDirectory.where(user_id: current_user.id).find_by(name: "home", ancestry: nil))
 
     @acc_creation_date = @curr_user.created_at
     if !@curr_user.locked_at.nil?
@@ -40,7 +34,7 @@ class DiscDetailsController < ApplicationController
   end
 
   def current_usage #w mb
-    1
+    count_Size_for_user.to_i
   end
 
   def file_count #w sztukach
@@ -53,5 +47,10 @@ class DiscDetailsController < ApplicationController
 
   def activity_type
     "unknown"
+  end
+
+  private
+  def edisk_directory_params
+    params.require(:edisk_directory).permit( :name,:parent_id, :ancestry)
   end
 end
