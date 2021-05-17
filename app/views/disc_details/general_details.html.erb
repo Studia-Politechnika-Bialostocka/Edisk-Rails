@@ -41,6 +41,10 @@
                 <td class="table-light"><%=@acc_file_count %></td>
               </tr>
               <tr>
+                <th class="table-primary">Dirrectory count:</th>
+                <td class="table-light"><%=@acc_dir_count -1%></td>
+              </tr>
+              <tr>
                 <th class="table-primary">Last activity date:</th>
                 <td class="table-light"><%=@acc_last_act_date %></td>
               </tr>
@@ -74,7 +78,26 @@
                 </tr>
               </table>
             </div>
+            <div class="card-header">Additional information of your disc:</div>
+            <div class="card-body">
+              <table class="center">
+                <tr>
+                  <th class="table-primary">Files with '<%= @search_name %>' in their name:</th>
+                  <td class="table-light"><%=@certant_filename %></td>
+                </tr>
+                <tr>
+                  <th class="table-primary">Your oldest file:</th>
+                  <td class="table-light"> <%= @oldest_file %></td>
+                </tr>
+                <tr>
+                  <th class="table-primary">Your newest file:</th>
+                  <td class="table-light"> <%= @newest_file %></td>
+                </tr>
+                <tr>
+              </table>
+            </div>
           </div>
+        </div>
       </div>
     </div>
   </div>

@@ -21,18 +21,40 @@ class DiscDetailsController < ApplicationController
     end
 
     @acc_file_count = EdiskFile.where(userID: current_user.id).count
+    @acc_dir_count = EdiskDirectory.where(user_id: current_user.id).count
 
     @acc_last_act_date = @curr_user.updated_at
 
     @disc_max_usage =  @curr_user.ediskSize
     @disc_curr_usage = @curr_user.current_size
 
+    @search_name = 'ruby'
+
+    @certant_filename = 0
+    for filename in EdiskFile.where(userID: current_user.id)
+      if filename.name.include? @search_name
+        @certant_filename = @certant_filename + 1
+      end
+    end
+
+    @oldest_file = "no file"
+    @newest_file = "no file"
+    @files = EdiskFile.where(userID: @curr_user.id).sort
+    iterator = 0
+    for filename in @files
+      if iterator ==  0
+        @oldest_file = filename.name
+        iterator = iterator + 1
+      end
+      @newest_file = filename.name
+    end
+
+
+
      respond_to do |format|
        format.html
      end
   end
-
-
 
   private
   def edisk_directory_params
