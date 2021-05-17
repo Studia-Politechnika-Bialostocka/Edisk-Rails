@@ -20,34 +20,19 @@ class DiscDetailsController < ApplicationController
       @acc_status = 'confirment at ' + @curr_user.confirmed_at.to_s
     end
 
-    @acc_file_count = file_count
+    @acc_file_count = EdiskFile.where(userID: current_user.id).count
 
     @acc_last_act_date = @curr_user.updated_at
 
-    @acc_last_act_type = activity_type
-    @disc_max_usage =  max_usage
-    @disc_curr_usage = current_usage
+    @disc_max_usage =  @curr_user.ediskSize
+    @disc_curr_usage = @curr_user.current_size
 
      respond_to do |format|
        format.html
      end
   end
 
-  def current_usage #w mb
-    count_Size_for_user.to_i
-  end
 
-  def file_count #w sztukach
-    0
-  end
-
-  def max_usage #gdzies zdefiniowane
-    10
-  end
-
-  def activity_type
-    "unknown"
-  end
 
   private
   def edisk_directory_params
