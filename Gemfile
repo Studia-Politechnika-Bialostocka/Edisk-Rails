@@ -77,6 +77,8 @@ gem 'devise'
 # https://github.com/ryanb/letter_opener
 gem "letter_opener", :group => :development
 
+#pdf
+gem 'prawn'
 
 #charts
 gem 'chartkick'

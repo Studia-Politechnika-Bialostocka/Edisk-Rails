@@ -50,12 +50,42 @@ class DiscDetailsController < ApplicationController
     end
 
 
-
      respond_to do |format|
        format.html
+       format.pdf do
+         pdf = Prawn::Document.new
+         pdf.text "As things are at the time of: "+Time.now.strftime("%d/%m/%Y %H:%M:%S"), size:20, style: :bold
+         pdf.text " "
+         pdf.text @who_am_i + " disc contains:", size:15, style: :bold
+         pdf.text " "
+         pdf.text "File count: " + @acc_file_count.to_s
+         pdf.text "Dirrectories count: " + @acc_dir_count.to_s
+         pdf.text " "
+         pdf.text @who_am_i + " disc usage is:", size:15, style: :bold
+         pdf.text " "
+         pdf.text "Disc maximum usage: " + @disc_max_usage.to_s + "B"
+         pdf.text "Disc current usage: " + @disc_curr_usage.to_s + "B"
+         pdf.text " "
+         pdf.text "If you have any question, please visit our tutorial first:", size:15
+         pdf.text tutorials,style: :bold
+         pdf.text " "
+         pdf.text " "
+         pdf.text "Sincerely, Edisc team."
+         send_data pdf.render, filename: "user_details.pdf", type: "application/pdf", disposition:"inline"
+       end
      end
   end
-
+  def tutorials
+    @links = [
+      "https://www.youtube.com/watch?v=fC7oUOUEEi4",
+      "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "https://www.youtube.com/watch?v=Ca8qDc-w4xU",
+      "https://www.youtube.com/watch?v=cE1FrqheQNI",
+      "https://www.youtube.com/watch?v=umDr0mPuyQc",
+      "https://www.youtube.com/watch?v=jU27QehicQQ"
+    ]
+    @links[rand(6)]
+  end
   private
   def edisk_directory_params
     params.require(:edisk_directory).permit( :name,:parent_id, :ancestry)
