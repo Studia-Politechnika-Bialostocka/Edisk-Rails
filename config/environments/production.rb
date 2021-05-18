@@ -18,7 +18,7 @@ Rails.application.configure do
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
-  # config.require_master_key = true
+  config.require_master_key = true
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
@@ -121,22 +121,17 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-  config.action_mailer.default_url_options = { host: 'example.com', port: 3000 }
-
-  config.action_mailer.perform_deliveries = true
-
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: 'edisk.herokuapp.com', :protocol => 'https'}
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: ENV['MAIL_HOST'] }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     user_name:      Rails.application.credentials.sendmail_username,
     password:       Rails.application.credentials.sendmail_password,
-    domain:         ENV['MAIL_HOST'],
-    address:       'smtp.gmail.com',
-    port:          '587',
+    domain:         "edisk.herokuapp.com",
+    address:        'smtp.gmail.com',
+    port:           '587',
     authentication: :plain,
     enable_starttls_auto: true
   }
