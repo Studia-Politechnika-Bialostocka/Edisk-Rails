@@ -21,6 +21,9 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+//chart import
+import "chartkick/chart.js"
+
 import '../stylesheets/site.scss'
 import '../stylesheets/navbarmain.scss'
 import '../stylesheets/navbar.css'
