@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2021_05_13_130601) do
 
   create_table "edisk_directories", force: :cascade do |t|
     t.string "name"
-    t.string "path", default: "home"
+    t.string "path"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2021_05_13_130601) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "edisk_directory_id"
     t.integer "userID"
+    t.index ["name"], name: "index_edisk_files_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -74,10 +75,10 @@ ActiveRecord::Schema.define(version: 2021_05_13_130601) do
     t.datetime "locked_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "username", default: "", null: false
     t.boolean "admin", default: false
     t.integer "ediskSize", default: 11000000
     t.integer "current_size", default: 0
-    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -85,5 +86,4 @@ ActiveRecord::Schema.define(version: 2021_05_13_130601) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "edisk_directories", "users"
-  add_foreign_key "edisk_files", "edisk_directories"
 end
