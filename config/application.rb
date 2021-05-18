@@ -18,7 +18,5 @@ module EdiskRails
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    config.active_storage.variant_processor = :mini_magick
-    config.assets.initialize_on_precompile = false  #TODO HEROKU TRY WORK?
   end
 end
