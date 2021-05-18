@@ -25,7 +25,8 @@ local:
 microsoft:
  service: AzureStorage
  storage_account_name: "edisk"
- storage_access_key: <%= Rails.application.credentials.azure[:azure_storage]%>
+# storage_access_key: <%#= Rails.application.credentials.azure[:azure_storage]%>
+ storage_access_key: "ddd"
  container: "edisk-container"
 
 # mirror:
