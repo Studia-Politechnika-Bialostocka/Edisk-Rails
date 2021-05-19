@@ -71,6 +71,7 @@ class EdiskDirectoriesController < ApplicationController
       end
     end
   end
+
   def count_Size_for_user
     temp = 0
     EdiskFile.where(userID: current_user.id).each do |f|

@@ -46,8 +46,13 @@ class EdiskFilesController < ApplicationController
     updateID = EdiskFile.where(userID: current_user.id).maximum(:updated_at)
     #unless (conditional) == if (!conditional)
     unless updateID.nil?
-        temp = EdiskFile.find_by(userID: current_user.id, updated_at: updateID)
-        temp.avatar.update(filename: temp.name)
+      file1 = EdiskFile.find_by(userID: current_user.id, updated_at: updateID)
+      temp = file1.avatar.content_type
+      if(temp === "text/plain")
+        file1.avatar.update(filename: file1.name += "." + "txt")
+      else
+        file1.avatar.update(filename: file1.name += "." + file1.avatar.content_type.split("/")[1])
+      end
     end
   end
 end
