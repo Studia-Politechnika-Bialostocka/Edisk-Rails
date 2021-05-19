@@ -32,7 +32,7 @@ class EdiskFilesController < ApplicationController
   def destroy
     @edisk_file = EdiskFile.where(userID: current_user.id).find(params[:id])
     actual_dir = @edisk_file.edisk_directory_id
-    @edisk_file.avatar.purge_later
+    # @edisk_file.avatar.purge_later
     @edisk_file.destroy
     redirect_to edisk_directory_path(actual_dir), notice: "Sucesfully destroyed"
   end

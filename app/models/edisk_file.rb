@@ -1,6 +1,6 @@
 class EdiskFile < ApplicationRecord
   belongs_to :edisk_Directory, optional: true
-  has_one_attached :avatar, dependent: :destroy
+  has_one_attached :avatar, dependent: :purge_later
   validates :avatar, presence:true
   validates :name, presence:true, uniqueness: true
   validate :acceptable_image, :on => :create

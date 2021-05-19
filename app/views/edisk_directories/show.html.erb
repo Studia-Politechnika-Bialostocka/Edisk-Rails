@@ -163,8 +163,11 @@
                           <%= button_to "Destroy", edisk_file_path(post), method: :delete, data: {confirm: "Are you sure?"},class: "btn btn-danger btn-sm"%>
                           <p><%="Link to file"%></p>
                           <%#= text_field_tag "myInput", "#{post.avatar.url}"%>
-                          <%= text_field_tag "myInput", "#{rails_blob_url(post.avatar, url_expires_in:1.seconds, disposition: "preview")}"%>
-                          <%#= text_field_tag "lll", "#{url(post.avatar, url_expires_in: 50.seconds, disposition: "preview")}" %>
+                          <%#= text_field_tag "myInput", "#{rails_blob_url(post.avatar, disposition: "preview")}"%>
+                          <%= text_field_tag "myInput", "#{post.avatar.url}" %>
+                          <%#= accept?(post.avatar) %>
+                          <%#= service_url(post.avatar) %>
+                          <%#= %>
                           <button onclick="myFunction()">Copy text</button>
                         </div>
                       </div>
