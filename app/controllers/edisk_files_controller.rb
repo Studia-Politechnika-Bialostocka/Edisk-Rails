@@ -18,10 +18,10 @@ class EdiskFilesController < ApplicationController
     end
   end
   def edit
-    @edisk_file = EdiskFile.find(params[:id])
+    @edisk_file = EdiskFile.where(userID: current_user.id).find(params[:id])
   end
   def update
-    @edisk_file = EdiskFile.find(params[:id])
+    @edisk_file = EdiskFile.where(userID: current_user.id).find(params[:id])
     actual_dir = @edisk_file.edisk_directory_id
     if @edisk_file.update(edisk_file_params)
       redirect_to edisk_directory_path(actual_dir), notice: "Successfully created"
@@ -30,8 +30,9 @@ class EdiskFilesController < ApplicationController
     end
   end
   def destroy
-    @edisk_file = EdiskFile.find(params[:id])
+    @edisk_file = EdiskFile.where(userID: current_user.id).find(params[:id])
     actual_dir = @edisk_file.edisk_directory_id
+    @edisk_file.avatar.purge_later
     @edisk_file.destroy
     redirect_to edisk_directory_path(actual_dir), notice: "Sucesfully destroyed"
   end

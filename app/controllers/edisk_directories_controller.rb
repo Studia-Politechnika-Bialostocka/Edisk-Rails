@@ -15,7 +15,7 @@ class EdiskDirectoriesController < ApplicationController
   def create
     @query = params[:format]
     @edisk_directory = current_user.edisk_directories.children_of(params[:parent_id]).new(edisk_directory_params)
-    actual_dir = EdiskDirectory.find(@edisk_directory.parent_id)
+    actual_dir = EdiskDirectory.where(userID: current_user.id).find(@edisk_directory.parent_id)
     if @edisk_directory.save
       redirect_to edisk_directory_path(actual_dir)
     else
@@ -24,12 +24,12 @@ class EdiskDirectoriesController < ApplicationController
   end
 
   def edit
-    @edisk_directory = EdiskDirectory.find(params[:id])
+    @edisk_directory = EdiskDirectory.where(userID: current_user.id).find(params[:id])
   end
 
   def update
-      @edisk_directory = EdiskDirectory.find(params[:id])
-      actual_dir = EdiskDirectory.find(@edisk_directory.parent_id)
+      @edisk_directory = EdiskDirectory.where(userID: current_user.id).find(params[:id])
+      actual_dir = EdiskDirectory.where(userID: current_user.id).find(@edisk_directory.parent_id)
 
       if @edisk_directory.update(edisk_directory_params)
         redirect_to edisk_directory_path(actual_dir)
@@ -38,7 +38,7 @@ class EdiskDirectoriesController < ApplicationController
       end
   end
   def destroy
-    @edisk_directory = EdiskDirectory.find(params[:id])
+    @edisk_directory = EdiskDirectory.where(userID: current_user.id).find(params[:id])
     actual_dir = @edisk_directory.parent_id
     @edisk_directory.destroy
 
