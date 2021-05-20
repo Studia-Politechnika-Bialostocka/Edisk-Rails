@@ -6,6 +6,7 @@ class EdiskFilesController < ApplicationController
     @query = params[:format]
     @edisk_directory = EdiskDirectory.where(user_id: current_user.id).find(@query)
     @edisk_file = @edisk_directory.edisk_files.new
+
   end
   def create
     @query = params[:format]
@@ -39,7 +40,7 @@ class EdiskFilesController < ApplicationController
 
   private
   def edisk_file_params
-    params.require(:edisk_file).permit(:name, :avatar, :userID)
+    params.require(:edisk_file).permit(:name, :avatar, :userID, :edisk_directory_id, :expiration_time)
   end
 
   def integrity_on_filename
@@ -55,4 +56,5 @@ class EdiskFilesController < ApplicationController
       end
     end
   end
+
 end

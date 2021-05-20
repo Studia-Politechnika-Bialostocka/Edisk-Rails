@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_13_130601) do
+ActiveRecord::Schema.define(version: 2021_05_20_101137) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2021_05_13_130601) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "edisk_directory_id"
     t.integer "userID"
+    t.string "expiration_time", default: "nil"
   end
 
   create_table "users", force: :cascade do |t|

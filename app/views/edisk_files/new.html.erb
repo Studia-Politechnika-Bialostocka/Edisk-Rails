@@ -1,3 +1,12 @@
+<%p=[] %>
+<%p.push("5.minutes") %>
+<%p.push("6.minutes") %>
+<%p.push("7.minutes") %>
+<%p.push("8.minutes") %>
+
+
+
+
 <h5>Create new file </h5>
 <%= form_with model: @edisk_file, url: new_edisk_file_path(format: @query) do |f| %>
 
@@ -22,6 +31,40 @@
     <%= hidden_field_tag :direct_id,  "#{var}" %>
     <%= f.hidden_field :userID, value: current_user.id %>
   </div>
+  <div>
+    <%=f.label "expiration time"%>
+    <div>
+      <p1>
+      <%=radio_button("edisk_file", "expiration_time","5 minutes")%>
+      5 minutes
+      </p1>
+    </div>
+    <div>
+      <p1>
+      <%=radio_button("edisk_file", "expiration_time","20 minutes")%>
+      20 minutes
+      </p1>
+    </div>
+    <div>
+      <p1>
+      <%=radio_button("edisk_file", "expiration_time","60 minutes")%>
+      60 minutes
+      </p1>
+    </div>
+    <div>
+      <p1>
+      <%=radio_button("edisk_file", "expiration_time","24 hours")%>
+      24 hours
+      </p1>
+    </div>
+    <div>
+      <p1>
+      <%=radio_button("edisk_file", "expiration_time", "nil")%>
+      No expiration time
+      </p1>
+    </div>
+  </div>
+
   <%= f.submit "Confirm" %>
 
 <% end %>

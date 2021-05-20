@@ -29,7 +29,7 @@ class EdiskDirectoriesController < ApplicationController
 
   def update
       @edisk_directory = EdiskDirectory.where(user_id: current_user.id).find(params[:id])
-      actual_dir = EdiskDirectory.where(userID: current_user.id).find(@edisk_directory.parent_id)
+      actual_dir = EdiskDirectory.where(user_id: current_user.id).find(@edisk_directory.parent_id)
 
       if @edisk_directory.update(edisk_directory_params)
         redirect_to edisk_directory_path(actual_dir)
@@ -92,13 +92,14 @@ class EdiskDirectoriesController < ApplicationController
   # koneic wrzutki
 
 
-  def return_all_files_from_directory(ed)
-    @edisk_file = EdiskFile.where(edisk_directory_id: ed.id)
+  def return_all_files_from_directory(file_ed)
+    @edisk_file = EdiskFile.where(edisk_directory_id: file_ed.id)
   end
 
   # def record_not_found(exception)
   #   redirect_to root_path, alert: "Nie istnieje taka strona"
   # end
+  #
   private
   def edisk_directory_params
     params.require(:edisk_directory).permit( :name,:parent_id, :ancestry)
