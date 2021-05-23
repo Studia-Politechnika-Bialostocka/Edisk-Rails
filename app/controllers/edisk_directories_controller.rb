@@ -75,7 +75,7 @@ class EdiskDirectoriesController < ApplicationController
   def count_Size_for_user
     temp = 0
     EdiskFile.where(userID: current_user.id).each do |f|
-      temp += f.avatar.byte_size
+      temp += f.efile.byte_size
     end
     current_user.update_attribute :current_size, temp
   end
@@ -100,6 +100,12 @@ class EdiskDirectoriesController < ApplicationController
   #   redirect_to root_path, alert: "Nie istnieje taka strona"
   # end
   #
+  def reload_file
+    flash[:alert] = "User not found."
+    respond_to do |format|
+      format.js {render inline: "location.reload();" }
+    end
+  end
   private
   def edisk_directory_params
     params.require(:edisk_directory).permit( :name,:parent_id, :ancestry)

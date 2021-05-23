@@ -1,20 +1,20 @@
 class EdiskFile < ApplicationRecord
   belongs_to :edisk_Directory, optional: true
-  has_one_attached :avatar, dependent: :purge_later
-  validates :avatar, presence:true
+  has_one_attached :efile, dependent: :purge_later
+  validates :efile, presence:true
   validates :name, presence:true, uniqueness: true
   validate :acceptable_image, :on => :create
 
   def acceptable_image
-    return unless avatar.attached?
+    return unless efile.attached?
     u = User.find(userID)
-    unless avatar.byte_size <= (u.ediskSize-u.current_size)
-      errors.add(:avatar, "is too big")
+    unless efile.byte_size <= (u.ediskSize-u.current_size)
+      errors.add(:efile, "is too big")
     end
   end
   def pic_for_type
     @a = ''
-    case avatar.content_type
+    case efile.content_type
     when 'application/pdf'
       @a = 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Icon-pdf.svg/711px-Icon-pdf.svg.png'
     else

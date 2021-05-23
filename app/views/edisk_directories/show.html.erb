@@ -130,23 +130,23 @@
                 <% return_all_files_from_directory(@current_directory).each do |post| %>
                   <div class="col-sm-6 col-lg-4">
                     <div class="card" style="width: 15rem;">
-                      <%if post.avatar.representable? %>
-                        <%= image_tag url_for(post.avatar.representation(resize_to_limit: [300, 300])), class:"card-img-top"%>
-                    <%elsif post.avatar.previewable? %>
-                        <%= image_tag url_for(post.avatar.preview(resize_to_limit: [300, 300])), class:"card-img-top"%>
+                      <%if post.efile.representable? %>
+                        <%= image_tag url_for(post.efile.representation(resize_to_limit: [300, 300])), class:"card-img-top"%>
+                    <%elsif post.efile.previewable? %>
+                        <%= image_tag url_for(post.efile.preview(resize_to_limit: [300, 300])), class:"card-img-top"%>
                       <% else %>
-                        <%= link_to rails_blob_path(post.avatar, disposition: "attachment") do %>
+                        <%= link_to rails_blob_path(post.efile, disposition: "attachment") do %>
                           <%= image_tag "#{post.pic_for_type}", alt: "Download file", class: "card-img-top", style:"max-height: 300px; max-width: 238.4px; min-height: 300px; min-width: 238.4px;" %>
                         <%end %>
                       <%end %>
                       <div class="card-body">
-                        <h5 class="card-title"> <%=link_to post.name, post.avatar %></h5>
+                        <h5 class="card-title"> <%=link_to post.name, post.efile %></h5>
                         <div>
                           <%= button_to "Edit", edit_edisk_file_path(post), method: :get, class: "btn btn-primary btn-sm"%>
                           <%= button_to "Destroy", edisk_file_path(post), method: :delete, data: {confirm: "Are you sure?"},class: "btn btn-danger btn-sm"%>
+                          <%= button_to "Expire all links", edisk_file_path(post), method: :get %>
                           <p><%="Link to file"%></p>
-                          <%= text_field_tag "#{post.avatar.name}", "#{post.avatar.url(expires_in: "10 seconds".to_i)}" %>
-
+                          <%= text_field_tag "#{post.name}", "#{post.efile.url}" %>
                         </div>
                       </div>
                     </div>
