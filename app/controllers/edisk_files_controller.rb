@@ -36,13 +36,7 @@ class EdiskFilesController < ApplicationController
     ffilename = @edisk_file.efile.filename
     fcontent_type= @edisk_file.efile.content_type
     @edisk_file.efile.blob.open do |file|
-      temp = "ActiveStorage::Blob".size
-      puts @edisk_file.efile.blob
-      puts 'yolo'
-      puts file
-      puts "yolanta"
       @edisk_file.efile.purge
-
       @edisk_file.efile.attach(io: file, filename: ffilename, content_type: fcontent_type)
     end
     flash[:notice] = "Link successfully expired"
@@ -62,14 +56,18 @@ class EdiskFilesController < ApplicationController
 
   def integrity_on_filename
     updateID = EdiskFile.where(userID: current_user.id).maximum(:updated_at)
-    #unless (conditional) == if (!conditional)
+    #unless works like that (conditional) == if (!conditional)
     unless updateID.nil?
       file1 = EdiskFile.find_by(userID: current_user.id, updated_at: updateID)
-      temp = file1.efile.content_type
-      if(temp === "text/plain")
-        file1.efile.update(filename: file1.name += "." + "txt")
+      file_format = file1.efile.filename.to_s.split(".")
+      if file_format.size.equal?(1)
+        if temp === "text/plain"
+          file1.efile.update(filename: file1.name += "." + "txt")
+        else
+          file1.efile.update(filename: file1.name += "." + file1.efile.content_type.split("/")[1])
+        end
       else
-        file1.efile.update(filename: file1.name += "." + file1.efile.content_type.split("/")[1])
+        file1.efile.update(filename: file1.name += "." + file_format.last)
       end
     end
   end

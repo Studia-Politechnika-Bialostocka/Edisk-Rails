@@ -14,11 +14,29 @@ class EdiskFile < ApplicationRecord
   end
   def pic_for_type
     @a = ''
-    case efile.content_type
-    when 'application/pdf'
-      @a = 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Icon-pdf.svg/711px-Icon-pdf.svg.png'
+    case efile.filename.to_s.split(".").last
+    when 'pdf'
+      @a = '/assets/pdf.png'
+    when 'doc'
+      @a = '/assets/doc.png'
+    when 'docx'
+      @a = '/assets/doc.png'
+    when 'js'
+      @a = '/assets/js.png'
+    when 'mp3'
+      @a = '/assets/mp3.png'
+    when 'mp4'
+      @a = '/assets/mp4.png'
+    when 'pptx'
+      @a = '/assets/powerpoint.png'
+    when 'zip'
+      @a = '/assets/zip.png'
+    when "xls"
+      @a = '/assets/xls.png'
+    when "txt"
+      @a = '/assets/txt.png'
     else
-      @a = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0c%2FFile_alt_font_awesome.svg%2F512px-File_alt_font_awesome.svg.png&f=1&nofb=1'
+      @a = '/assets/text.png'
     end
   end
 end
