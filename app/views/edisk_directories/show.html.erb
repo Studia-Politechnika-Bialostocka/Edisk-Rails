@@ -119,7 +119,7 @@
                         <h5 class="card-title"><%=link_to post.name, edisk_directory_path(post)%></h5>
                         <div>
                           <%= button_to "Edit", edit_edisk_directory_path(post), method: :get, class: "btn btn-primary btn-sm"%>
-                          <%= button_to "Destroy", edisk_directory_path(post), method: :delete,data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm"%>
+                          <%= button_to "Delete", edisk_directory_path(post), method: :delete,data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm"%>
                         </div>
                       </div>
                     </div>
@@ -143,10 +143,15 @@
                         <h5 class="card-title"> <%=link_to post.name, post.efile %></h5>
                         <div>
                           <%= button_to "Edit", edit_edisk_file_path(post), method: :get, class: "btn btn-primary btn-sm"%>
-                          <%= button_to "Destroy", edisk_file_path(post), method: :delete, data: {confirm: "Are you sure?"},class: "btn btn-danger btn-sm"%>
+                          <%= button_to "Delete", edisk_file_path(post), method: :delete, data: {confirm: "Are you sure?"},class: "btn btn-danger btn-sm"%>
                           <%= button_to "Expire all links", edisk_file_path(post), method: :get %>
                           <p><%="Link to file"%></p>
-                          <%= text_field_tag "#{post.name}", "#{post.efile.url}" %>
+                                <p><%="(" + expiration_time_into_string(post.expiration_time) + ")"%></p>
+                          <% if(post.expiration_time == "nil")%>
+                            <%= text_field_tag "#{post.name}", "#{post.efile.url}" %>
+                            <%else %>
+                          <%= text_field_tag "#{post.name}", "#{post.efile.url(expires_in: post.expiration_time.to_i)}" %>
+                          <%end %>
                         </div>
                       </div>
                     </div>

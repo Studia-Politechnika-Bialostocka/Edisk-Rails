@@ -1,7 +1,8 @@
 class EdiskDirectoriesController < ApplicationController
   before_action :authenticate_user!
   # rescue_from ::ActiveRecord::RecordNotFound, with: :record_not_found
-  helper_method :return_all_files_from_directory
+  helper_method :return_all_files_from_directory, :expiration_time_into_string
+
   after_action :count_Size_for_user
 
   #wrzutka testowa
@@ -78,6 +79,22 @@ class EdiskDirectoriesController < ApplicationController
       temp += f.efile.byte_size
     end
     current_user.update_attribute :current_size, temp
+  end
+
+  def expiration_time_into_string(expiration_time)
+    @returning = ''
+    case expiration_time
+    when "5 minutes"
+      @returning = "Limit: 5 minutes"
+    when "20 minutes"
+      @returning = "Limit: 20 minutes"
+    when "60 minutes"
+      @returning = "Limit: 60 minutes"
+    when "24 hours"
+      @returning = "Limit: 24 hours"
+    when "nil"
+      @returning = "No limit for expiration"
+    end
   end
 
   def add_breadcrumbs(label, path = nil)

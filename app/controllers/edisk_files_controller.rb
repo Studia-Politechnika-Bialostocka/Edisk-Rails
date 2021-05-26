@@ -1,7 +1,6 @@
 class EdiskFilesController < ApplicationController
   before_action :authenticate_user!
   after_action :integrity_on_filename, only: [:create, :update]
-
   def new
     @query = params[:format]
     @edisk_directory = EdiskDirectory.where(user_id: current_user.id).find(@query)
@@ -48,6 +47,7 @@ class EdiskFilesController < ApplicationController
     @edisk_file.destroy
     redirect_to edisk_directory_path(actual_dir), notice: "Sucesfully destroyed"
   end
+
 
   private
   def edisk_file_params
