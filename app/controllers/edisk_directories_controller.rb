@@ -1,12 +1,13 @@
 class EdiskDirectoriesController < ApplicationController
   before_action :authenticate_user!
-  # rescue_from ::ActiveRecord::RecordNotFound, with: :record_not_found
+  rescue_from ::ActiveRecord::RecordNotFound, with: :record_not_found
   helper_method :return_all_files_from_directory
   after_action :count_Size_for_user
 
   #wrzutka testowa
   before_action :set_breadcrumbs
 
+  #
   def new
     @query = params[:format]
     @edisk_directory = EdiskDirectory.new
@@ -95,9 +96,12 @@ class EdiskDirectoriesController < ApplicationController
     @edisk_file = EdiskFile.where(edisk_directory_id: ed.id)
   end
 
-  # def record_not_found(exception)
-  #   redirect_to root_path, alert: "Nie istnieje taka strona"
-  # end
+  #start
+  def record_not_found(exception)
+    redirect_to wrong_id_path, alert: "Nie istnieje taka strona, bledne id"
+  end
+  #koniec
+
   private
   def edisk_directory_params
     params.require(:edisk_directory).permit( :name,:parent_id, :ancestry)
