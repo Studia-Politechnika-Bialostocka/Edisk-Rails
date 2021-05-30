@@ -1,7 +1,9 @@
 class EdiskDirectoriesController < ApplicationController
   before_action :authenticate_user!
+
   rescue_from ::ActiveRecord::RecordNotFound, with: :record_not_found
-  helper_method :return_all_files_from_directory
+  helper_method :return_all_files_from_directory, :expiration_time_into_string
+
   after_action :count_Size_for_user
 
   #wrzutka testowa
@@ -16,7 +18,7 @@ class EdiskDirectoriesController < ApplicationController
   def create
     @query = params[:format]
     @edisk_directory = current_user.edisk_directories.children_of(params[:parent_id]).new(edisk_directory_params)
-    actual_dir = EdiskDirectory.find(@edisk_directory.parent_id)
+    actual_dir = EdiskDirectory.where(user_id: current_user.id).find(@edisk_directory.parent_id)
     if @edisk_directory.save
       redirect_to edisk_directory_path(actual_dir)
     else
@@ -25,12 +27,12 @@ class EdiskDirectoriesController < ApplicationController
   end
 
   def edit
-    @edisk_directory = EdiskDirectory.find(params[:id])
+    @edisk_directory = EdiskDirectory.where(user_id: current_user.id).find(params[:id])
   end
 
   def update
-      @edisk_directory = EdiskDirectory.find(params[:id])
-      actual_dir = EdiskDirectory.find(@edisk_directory.parent_id)
+      @edisk_directory = EdiskDirectory.where(user_id: current_user.id).find(params[:id])
+      actual_dir = EdiskDirectory.where(user_id: current_user.id).find(@edisk_directory.parent_id)
 
       if @edisk_directory.update(edisk_directory_params)
         redirect_to edisk_directory_path(actual_dir)
@@ -39,7 +41,7 @@ class EdiskDirectoriesController < ApplicationController
       end
   end
   def destroy
-    @edisk_directory = EdiskDirectory.find(params[:id])
+    @edisk_directory = EdiskDirectory.where(user_id: current_user.id).find(params[:id])
     actual_dir = @edisk_directory.parent_id
     @edisk_directory.destroy
 
@@ -72,12 +74,29 @@ class EdiskDirectoriesController < ApplicationController
       end
     end
   end
+
   def count_Size_for_user
     temp = 0
     EdiskFile.where(userID: current_user.id).each do |f|
-      temp += f.avatar.byte_size
+      temp += f.efile.byte_size
     end
     current_user.update_attribute :current_size, temp
+  end
+
+  def expiration_time_into_string(expiration_time)
+    @returning = ''
+    case expiration_time
+    when "5 minutes"
+      @returning = "Limit: 5 minutes"
+    when "20 minutes"
+      @returning = "Limit: 20 minutes"
+    when "60 minutes"
+      @returning = "Limit: 60 minutes"
+    when "24 hours"
+      @returning = "Limit: 24 hours"
+    when "nil"
+      @returning = "No limit for expiration"
+    end
   end
 
   def add_breadcrumbs(label, path = nil)
@@ -92,8 +111,8 @@ class EdiskDirectoriesController < ApplicationController
   # koneic wrzutki
 
 
-  def return_all_files_from_directory(ed)
-    @edisk_file = EdiskFile.where(edisk_directory_id: ed.id)
+  def return_all_files_from_directory(file_ed)
+    @edisk_file = EdiskFile.where(edisk_directory_id: file_ed.id)
   end
 
   #start

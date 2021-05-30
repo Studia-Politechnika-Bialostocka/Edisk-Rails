@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   def count_Size_for_user
     temp = 0
     EdiskFile.where(userID: current_user.id).each do |f|
-      temp += f.avatar.byte_size
+      temp += f.efile.byte_size
     end
     current_user.update_attribute :current_size, temp
     temp
