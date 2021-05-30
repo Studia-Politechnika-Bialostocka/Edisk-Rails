@@ -3,6 +3,11 @@ class AdminController < ApplicationController
     if current_user.try(:admin?)
       @users = User.all
       @totalUsers = User.all.count
+      @totalDiskUsage = 0
+      for x in @users do
+        @totalDiskUsage += x.current_size
+      end
+
     elsif user_signed_in?
       redirect_to root_path, alert: "You don't have access!"
     else
