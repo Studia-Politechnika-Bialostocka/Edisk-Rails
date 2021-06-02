@@ -1,3 +1,30 @@
+<%p=[] %>
+<%p.push("5.minutes") %>
+<%p.push("6.minutes") %>
+<%p.push("7.minutes") %>
+<%p.push("8.minutes") %>
+<script
+        src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous">
+</script>
+<script>
+    function validateFiles(inputFile) {
+        var maxFileSize = $(inputFile).data('max-file-size');
+        var maxExceededMessage = "This file exceeds the maximum allowed file size. Remaining space:" + Number.parseFloat(maxFileSize/1048576).toPrecision(4)+"MB.";
+        var file_size = inputFile.files[0].size;
+        var file_information = "\nYour file size:" + Number.parseFloat(file_size/1048576).toPrecision(4) + "MB.";
+        var sizeExceeded = false;
+
+        if (file_size && maxFileSize && file_size > parseInt(maxFileSize)) {sizeExceeded=true;};
+        if (sizeExceeded) {
+            window.alert(maxExceededMessage+file_information);
+            $(inputFile).val('');
+        };
+    }
+</script>
+
+
 <h5>Create new file </h5>
 <%= form_with model: @edisk_file, url: new_edisk_file_path(format: @query) do |f| %>
 
@@ -11,7 +38,8 @@
 
   <div>
     <%= f.label :"Upload file" %>
-    <%= f.file_field :avatar %>
+    <%= f.file_field :efile, :onchange => "validateFiles(this)",
+        data: { max_file_size: current_user.ediskSize-current_user.current_size } %>
   </div>
   <div class="field">
     <%= f.label :name %>
@@ -22,6 +50,40 @@
     <%= hidden_field_tag :direct_id,  "#{var}" %>
     <%= f.hidden_field :userID, value: current_user.id %>
   </div>
+  <div>
+    <%=f.label "expiration time"%>
+    <div>
+      <p1>
+      <%=radio_button("edisk_file", "expiration_time","5 minutes")%>
+      5 minutes
+      </p1>
+    </div>
+    <div>
+      <p1>
+      <%=radio_button("edisk_file", "expiration_time","20 minutes")%>
+      20 minutes
+      </p1>
+    </div>
+    <div>
+      <p1>
+      <%=radio_button("edisk_file", "expiration_time","60 minutes")%>
+      60 minutes
+      </p1>
+    </div>
+    <div>
+      <p1>
+      <%=radio_button("edisk_file", "expiration_time","24 hours")%>
+      24 hours
+      </p1>
+    </div>
+    <div>
+      <p1>
+      <%=radio_button("edisk_file", "expiration_time", "nil")%>
+      No expiration time
+      </p1>
+    </div>
+  </div>
+
   <%= f.submit "Confirm" %>
 
 <% end %>

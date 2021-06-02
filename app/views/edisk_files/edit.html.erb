@@ -19,9 +19,41 @@
 
       <%= f.label :path %>
       <% actual_dir = EdiskDirectory.find(@edisk_file.edisk_directory_id) %>
-      <%= f.collection_select :edisk_directory_id, EdiskDirectory.all.where(user_id: current_user.id).excluding(EdiskDirectory.descendants_of(actual_dir.id)), :id, :ancestry_into_array, {:selected => actual_dir.id} %>
+      <%= f.collection_select :edisk_directory_id, EdiskDirectory.all.where(user_id: current_user.id), :id, :ancestry_into_array, {:selected => actual_dir.id} %>
     </div>
-
+    <div>
+      <%=f.label "expiration time"%>
+      <div>
+        <p1>
+          <%=radio_button("edisk_file", "expiration_time","5 minutes")%>
+          5 minutes
+        </p1>
+      </div>
+      <div>
+        <p1>
+          <%=radio_button("edisk_file", "expiration_time","20 minutes")%>
+          20 minutes
+        </p1>
+      </div>
+      <div>
+        <p1>
+          <%=radio_button("edisk_file", "expiration_time","60 minutes")%>
+          60 minutes
+        </p1>
+      </div>
+      <div>
+        <p1>
+          <%=radio_button("edisk_file", "expiration_time","24 hours")%>
+          24 hours
+        </p1>
+      </div>
+      <div>
+        <p1>
+          <%=radio_button("edisk_file", "expiration_time", "nil")%>
+          No expiration time
+        </p1>
+      </div>
+    </div>
 
     <%= f.submit "Confirm" %>
 

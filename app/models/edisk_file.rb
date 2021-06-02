@@ -1,24 +1,42 @@
 class EdiskFile < ApplicationRecord
   belongs_to :edisk_Directory, optional: true
-  has_one_attached :avatar, dependent: :destroy
-  validates :avatar, presence:true
+  has_one_attached :efile, dependent: :purge_later
+  validates :efile, presence:true
   validates :name, presence:true, uniqueness: true
-  validate :acceptable_image, :on => :create
+  # validate :acceptable_image, :on => :create
 
-  def acceptable_image
-    return unless avatar.attached?
-    u = User.find(userID)
-    unless avatar.byte_size <= (u.ediskSize-u.current_size)
-      errors.add(:avatar, "is too big")
-    end
-  end
+  # def acceptable_image
+  #   return unless efile.attached?
+    # u = User.find(userID)
+    # unless efile.byte_size <= (u.ediskSize-u.current_size)
+    #   errors.add(:efile, "is too big")
+    # end
+  # end
   def pic_for_type
     @a = ''
-    case avatar.content_type
-    when 'application/pdf'
-      @a = 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Icon-pdf.svg/711px-Icon-pdf.svg.png'
+    case efile.filename.to_s.split(".").last
+    when 'pdf'
+      @a = '/assets/pdf.png'
+    when 'doc'
+      @a = '/assets/doc.png'
+    when 'docx'
+      @a = '/assets/doc.png'
+    when 'js'
+      @a = '/assets/js.png'
+    when 'mp3'
+      @a = '/assets/mp3.png'
+    when 'mp4'
+      @a = '/assets/mp4.png'
+    when 'pptx'
+      @a = '/assets/powerpoint.png'
+    when 'zip'
+      @a = '/assets/zip.png'
+    when "xls"
+      @a = '/assets/xls.png'
+    when "txt"
+      @a = '/assets/txt.png'
     else
-      @a = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0c%2FFile_alt_font_awesome.svg%2F512px-File_alt_font_awesome.svg.png&f=1&nofb=1'
+      @a = '/assets/text.png'
     end
   end
 end
