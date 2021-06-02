@@ -16,27 +16,27 @@ class EdiskFile < ApplicationRecord
     @a = ''
     case efile.filename.to_s.split(".").last
     when 'pdf'
-      @a = '\assets\pdf.png'
+      @a = 'pdf.png'
     when 'doc'
-      @a = '\assets\doc.png'
+      @a = 'doc.png'
     when 'docx'
-      @a = '\assets\doc.png'
+      @a = 'doc.png'
     when 'js'
-      @a = '\assets\js.png'
+      @a = 'js.png'
     when 'mp3'
-      @a = '\assets\mp3.png'
+      @a = 'mp3.png'
     when 'mp4'
-      @a = '\assets\mp4.png'
+      @a = 'mp4.png'
     when 'pptx'
-      @a = '\assets\powerpoint.png'
+      @a = 'powerpoint.png'
     when 'zip'
-      @a = '\assets\zip.png'
+      @a = 'zip.png'
     when "xls"
-      @a = '\assets\xls.png'
+      @a = 'xls.png'
     when "txt"
-      @a = '\assets\txt.png'
+      @a = 'txt.png'
     else
-      @a = '\assets\text.png'
+      @a = 'text.png'
     end
   end
 end

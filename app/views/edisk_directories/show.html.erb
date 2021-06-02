@@ -114,7 +114,7 @@
                 <% @edisk_directories.each do |post| %>
                   <div class="col-sm-6 col-lg-4">
                     <div class="card" style="width: 15rem;">
-                      <img class="card-img-top" src="\assets\file.png" alt="Card image cap" style="max-height: 300px; max-width: 238.4px; min-height: 300px; min-width: 238.4px;">
+                      <%= image_pack_tag 'file.png', class: "card-img-top" %>
                       <div class="card-body">
                         <h5 class="card-title"><%=link_to post.name, edisk_directory_path(post)%></h5>
                         <div>
@@ -136,7 +136,7 @@
                         <%= image_tag url_for(post.efile.preview(resize_to_limit: [300, 300])), class:"card-img-top", style:"max-height: 300px; max-width: 238.4px; min-height: 300px; min-width: 238.4px;"%>
                       <% else %>
                         <%= link_to rails_blob_path(post.efile, disposition: "attachment") do %>
-                          <%= image_tag "#{post.pic_for_type}", alt: "Download file", class: "card-img-top", style:"max-height: 300px; max-width: 238.4px; min-height: 300px; min-width: 238.4px;" %>
+                          <%= image_pack_tag "#{post.pic_for_type}", alt: "Download file", class: "card-img-top", style:"max-height: 300px; max-width: 238.4px; min-height: 300px; min-width: 238.4px;" %>
                         <%end %>
                       <%end %>
                       <div class="card-body">
