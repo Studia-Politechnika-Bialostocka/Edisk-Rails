@@ -114,7 +114,7 @@
                 <% @edisk_directories.each do |post| %>
                   <div class="col-sm-6 col-lg-4">
                     <div class="card" style="width: 15rem;">
-                      <%= image_pack_tag 'file.png', class: "card-img-top" %>
+                      <%= image_pack_tag 'picture.png', style: "", alt: "Card image cap", class: "card-img-top"  %>
                       <div class="card-body">
                         <h5 class="card-title"><%=link_to post.name, edisk_directory_path(post)%></h5>
                         <div>
