@@ -117,7 +117,7 @@ class EdiskDirectoriesController < ApplicationController
 
   #start
   def record_not_found(exception)
-    redirect_to wrong_id_path, alert: "Nie istnieje taka strona, bledne id"
+    redirect_to wrong_id_path, alert: "That site does not exists, wrong id"
   end
   #koniec
 
