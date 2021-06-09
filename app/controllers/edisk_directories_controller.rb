@@ -42,12 +42,17 @@ class EdiskDirectoriesController < ApplicationController
   end
   def destroy
     @edisk_directory = EdiskDirectory.where(user_id: current_user.id).find(params[:id])
-    actual_dir = @edisk_directory.parent_id
-    @edisk_directory.destroy
 
-    redirect_to edisk_directory_path(actual_dir), notice: "Sucesfully destroyed"
+    if @edisk_directory.ancestry.nil?
+      redirect_to edisk_directory_path(@edisk_directory), alert: "You cannot do that. Stop it"
+    else
+      actual_dir = @edisk_directory.parent_id
+      @edisk_directory.destroy
+
+      redirect_to edisk_directory_path(actual_dir), notice: "Sucesfully destroyed"
+
+    end
   end
-
   def show
     @edisk_directory = EdiskDirectory.find(params[:id])
     @edisk_directories = EdiskDirectory.children_of(@edisk_directory).where(user_id: current_user.id)

@@ -3,7 +3,7 @@
 <%= form_with model: @edisk_directory do |f| %>
   <div class="field, form-group">
     <%= f.label :name %>
-    <%= f.text_field :name, autofocus: true, value: @edisk_directory.name, class: "form-control mb-2"%>
+    <%= f.text_field :name, autofocus: true, value: @edisk_directory.name, placeholder: @edisk_directory.name, class: "form-control mb-2"%>
     <% if @edisk_directory.errors.any? %>
       <div id="error_explanation">
         <ul>
