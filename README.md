@@ -7,6 +7,8 @@
 * [Link to Application](#Link-to-application)   
 * [Screenshots](#Screenshots)
 
+---
+
 ## Project Task
 File storage
 * limited size of eDisk for a single user
@@ -24,6 +26,7 @@ File storage
 
 project for a group of up to 3 people
 
+---
 ### Autors:
 * Mateusz Białowąs
 * Maciej Bociuk
@@ -33,6 +36,7 @@ project for a group of up to 3 people
 https://edisk.herokuapp.com/    
 Slow start
 
+---
 ### Screenshots
 ![image](https://user-images.githubusercontent.com/58574619/121564337-a2d92680-ca1b-11eb-94f2-a705922e5687.png)
 ![image](https://user-images.githubusercontent.com/58574619/121564432-bbe1d780-ca1b-11eb-9d0e-d89ebf448fc5.png)
