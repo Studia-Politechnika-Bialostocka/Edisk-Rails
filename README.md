@@ -1,4 +1,12 @@
-# E-disk - dysk via WWW
+# E-disk - disc via WWW
+
+---
+## Table of Contents
+* [Project Task](#Project-Task)
+* [Autors](#Autors)
+* [Link to Application](#Link to application)   
+
+## Project Task
 Magazyn plików
 * ograniczony rozmiar e-dysku dla pojedynczego użytkownika
 * możliwość tworzenia katalogów
@@ -15,9 +23,11 @@ Magazyn plików
 
 projekt dla grupy maksymalnie 3-osobowej
 
-### Projekt wykonali:
+### Autors:
 * Mateusz Białowąs
 * Maciej Bociuk
 * Mateusz Sekściński
 ---
+### Link to application
 https://edisk.herokuapp.com/    
+Slow start
