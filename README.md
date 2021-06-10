@@ -4,24 +4,25 @@
 ## Table of Contents
 * [Project Task](#Project-Task)
 * [Autors](#Autors)
-* [Link to Application](#Link to application)   
+* [Link to Application](#Link-to-application)   
+* [Screenshots](#Screenshots)
 
 ## Project Task
-Magazyn plików
-* ograniczony rozmiar e-dysku dla pojedynczego użytkownika
-* możliwość tworzenia katalogów
-* operacje na plikach lub katalogach:
-    * załaduj
-    * sciągnij
-    * udostępnij (plik dostępny publicznie do
-      pobrania na podstawie linka, np. do umieszczenia zdjęcia na aukcjach, blogach, stronach www)
-    * nowy katalog
-    * zmiana nazwy
-    * wytnij
-    * wklej
-    * usuń
+File storage
+* limited size of eDisk for a single user
+* possibility to create folders
+* operations on files or directories:
+    * upload
+    * download
+    * share (file available to the public for
+      download based on a link, e.g. for placing the photo on auctions, blogs, websites)
+    * new catalog
+    * change name
+    * cut
+    * paste
+    * delete
 
-projekt dla grupy maksymalnie 3-osobowej
+project for a group of up to 3 people
 
 ### Autors:
 * Mateusz Białowąs
@@ -31,3 +32,9 @@ projekt dla grupy maksymalnie 3-osobowej
 ### Link to application
 https://edisk.herokuapp.com/    
 Slow start
+
+### Screenshots
+![image](https://user-images.githubusercontent.com/58574619/121564337-a2d92680-ca1b-11eb-94f2-a705922e5687.png)
+![image](https://user-images.githubusercontent.com/58574619/121564432-bbe1d780-ca1b-11eb-9d0e-d89ebf448fc5.png)
+![image](https://user-images.githubusercontent.com/58574619/121564481-c69c6c80-ca1b-11eb-89da-0a22d300120e.png)
+![image](https://user-images.githubusercontent.com/58574619/121564524-d1ef9800-ca1b-11eb-8017-3c94902ae73f.png)
