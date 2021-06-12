@@ -2,7 +2,7 @@
 
 ---
 ## Table of Contents
-* [📕 Project Task](#Project-Task-)
+* [📕 Project Task](#-Project-Task)
 * [🤓 Autors](#Autors-)
 * [🌐 Link to Application](https://edisk.herokuapp.com/)   
 * [🛠 Tools and technologies](#Tools-and-technologies-)
@@ -10,7 +10,7 @@
 
 ---
 
-## Project Task 📕
+## 📕 Project Task
 File storage
 * limited size of eDisk for a single user
 * possibility to create folders
