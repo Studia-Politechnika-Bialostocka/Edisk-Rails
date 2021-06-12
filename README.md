@@ -1,3 +1,7 @@
+<p align="center">
+  <img alt="disk logo" src="https://user-images.githubusercontent.com/58574619/121790173-e8911d00-cbdc-11eb-8a3f-5db72c322615.png">
+</p>
+
 # E-disk - disc via WWW
 
 ---
