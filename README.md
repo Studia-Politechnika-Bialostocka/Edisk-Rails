@@ -2,7 +2,7 @@
 
 ---
 ## Table of Contents
-* [:closed_book: Project Task](#Project-Task-:closed_book:)
+* [:closed_book: Project Task](#Project-Task)
 * [🤓 Autors](#Autors)
 * [🌐 Link to Application](https://edisk.herokuapp.com/)   
 * [🛠 Tools and technologies](#Tools-and-technologies)
