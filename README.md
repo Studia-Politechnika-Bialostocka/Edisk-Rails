@@ -44,19 +44,19 @@ Slow start
 ---
 ### 🛠 Tools and technologies 
 <div style: "display: flex;">
-   <img alt="Ruby 3.0.0.0" src="https://img.shields.io/badge/Ruby-3.0.0-484f58?style=flat-square&logo=Ruby&logoColor=white&labelColor=CC342D"/>
-   <img alt="Rails 6.1.3" src="https://img.shields.io/badge/Rails-6.1.3-484f58?style=flat-square&logo=Ruby-on-Rails&logoColor=white&labelColor=CC0000"/>
-   <img alt="PostgreSQL" src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=PostgreSQL&logoColor=white"/>
-   <img alt="Gmail" src="https://img.shields.io/badge/Gmail-EA4335?style=flat-square&logo=Gmail&logoColor=white"/>
-   <img alt="Bootstrap" src="https://img.shields.io/badge/Bootstrap-5.0.0-484f58?style=flat-square&logo=Bootstrap&logoColor=white&labelColor=7952B3"/>
-   <img alt="Heroku" src="https://img.shields.io/badge/Heroku-430098?style=flat-square&logo=Heroku&logoColor=white"/>
-   <img alt="HTML5" src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=white"/>
-   <img alt="CSS3" src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=white"/>
-   <img alt="Sass" src="https://img.shields.io/badge/Sass-CC6699?style=flat-square&logo=Sass&logoColor=white"/>
-   <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=white"/>
-   <img alt="Git" src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=Git&logoColor=white"/>
-   <img alt="GitHub" src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/>
-   <img alt="Microsoft Azure" src="https://img.shields.io/badge/Microsoft Azure-0078D4?style=flat-square&logo=Microsoft-Azure&logoColor=white"/>
+   <img alt="Ruby 3.0.0.0" src="https://img.shields.io/badge/Ruby-3.0.0-484f58?style=for-the-badge&logo=Ruby&logoColor=white&labelColor=CC342D"/>
+   <img alt="Rails 6.1.3" src="https://img.shields.io/badge/Rails-6.1.3-484f58?style=for-the-badge&logo=Ruby-on-Rails&logoColor=white&labelColor=CC0000"/>
+   <img alt="PostgreSQL" src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=PostgreSQL&logoColor=white"/>
+   <img alt="Gmail" src="https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=Gmail&logoColor=white"/>
+   <img alt="Bootstrap" src="https://img.shields.io/badge/Bootstrap-5.0.0-484f58?style=for-the-badge&logo=Bootstrap&logoColor=white&labelColor=7952B3"/>
+   <img alt="Heroku" src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=Heroku&logoColor=white"/>
+   <img alt="HTML5" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"/>
+   <img alt="CSS3" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white"/>
+   <img alt="Sass" src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=Sass&logoColor=white"/>
+   <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"/>
+   <img alt="Git" src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white"/>
+   <img alt="GitHub" src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"/>
+   <img alt="Microsoft Azure" src="https://img.shields.io/badge/Microsoft Azure-0078D4?style=for-the-badge&logo=Microsoft-Azure&logoColor=white"/>
 </div>
 
 ---
