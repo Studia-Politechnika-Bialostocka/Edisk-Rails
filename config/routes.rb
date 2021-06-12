@@ -57,7 +57,7 @@ Rails.application.routes.draw do
     get '/ed-admin' => 'admin#dashboard', as: :admin_dashboard
     delete "/ed-admin/:id" => 'admin#destroy', as: :admin_dashboard2
   end
-  match '*path' => 'edisk_directories#wrong_id', via: :all
+  # match '*path' => 'edisk_directories#wrong_id', via: :all
 
 end
 
