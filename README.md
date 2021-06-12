@@ -7,7 +7,7 @@
 ---
 ## Table of Contents
 * [📕 Project Task](#-Project-Task)
-* [🤓 Autors](#-Autors)
+* [🤓 Authors](#-Authors)
 * [🌐 Link to Application](https://edisk.herokuapp.com/)   
 * [🛠 Tools and technologies](#-Tools-and-technologies)
 * [📷 Screenshots](#-Screenshots)
@@ -32,7 +32,7 @@ File storage
 project for a group of up to 3 people
 
 ---
-### 🤓 Autors:
+### 🤓 Authors:
 * Mateusz Białowąs
 * Maciej Bociuk
 * Mateusz Sekściński
