@@ -10,7 +10,7 @@
 
 ---
 
-## Project Task :closed_book:
+## Project Task 🤓
 File storage
 * limited size of eDisk for a single user
 * possibility to create folders
