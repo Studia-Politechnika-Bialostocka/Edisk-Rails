@@ -3,10 +3,10 @@
 ---
 ## Table of Contents
 * [📕 Project Task](#-Project-Task)
-* [🤓 Autors](#Autors-)
+* [🤓 Autors](#-Autors)
 * [🌐 Link to Application](https://edisk.herokuapp.com/)   
-* [🛠 Tools and technologies](#Tools-and-technologies-)
-* [📷 Screenshots](#Screenshots-)
+* [🛠 Tools and technologies](#-Tools-and-technologies)
+* [📷 Screenshots](#-Screenshots)
 
 ---
 
@@ -28,17 +28,17 @@ File storage
 project for a group of up to 3 people
 
 ---
-### Autors 🤓:
+### 🤓 Autors:
 * Mateusz Białowąs
 * Maciej Bociuk
 * Mateusz Sekściński
 ---
-### Link to application 🌐
+### 🌐 Link to application 
 https://edisk.herokuapp.com/    
 Slow start
 
 ---
-### Tools and technologies 🛠
+### 🛠 Tools and technologies 
 <div style: "display: flex;">
    <img alt="Ruby 3.0.0.0" src="https://img.shields.io/badge/Ruby-3.0.0-484f58?style=flat-square&logo=Ruby&logoColor=white&labelColor=CC342D"/>
    <img alt="Rails 6.1.3" src="https://img.shields.io/badge/Rails-6.1.3-484f58?style=flat-square&logo=Ruby-on-Rails&logoColor=white&labelColor=CC0000"/>
@@ -56,7 +56,7 @@ Slow start
 </div>
 
 ---
-### Screenshots 📷
+### 📷 Screenshots
 ![image](https://user-images.githubusercontent.com/58574619/121564337-a2d92680-ca1b-11eb-94f2-a705922e5687.png)
 ![image](https://user-images.githubusercontent.com/58574619/121564432-bbe1d780-ca1b-11eb-9d0e-d89ebf448fc5.png)
 ![image](https://user-images.githubusercontent.com/58574619/121564481-c69c6c80-ca1b-11eb-89da-0a22d300120e.png)
