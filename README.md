@@ -2,11 +2,11 @@
 
 ---
 ## Table of Contents
-* [📕 Project Task](#Project-Task)
+* [📕 Project Task](#Project-Task-📕)
 * [🤓 Autors](#Autors)
 * [🌐 Link to Application](https://edisk.herokuapp.com/)   
 * [🛠 Tools and technologies](#Tools-and-technologies)
-* [📷 Screenshots](#Screenshots)
+* [📷 Screenshots](#Screenshots-📷)
 
 ---
 
