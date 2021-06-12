@@ -2,14 +2,15 @@
 
 ---
 ## Table of Contents
-* [Project Task](#Project-Task)
-* [Autors](#Autors)
-* [Link to Application](https://edisk.herokuapp.com/)   
-* [Screenshots](#Screenshots)
+* [📕 Project Task](#📕-Project-Task)
+* [🤓 Autors](#🤓-Autors)
+* [🌐 Link to Application](https://edisk.herokuapp.com/)   
+* [🛠 Tools and technologies](#🛠-Tools-and-technologies)
+* [📷 Screenshots](#📷-Screenshots)
 
 ---
 
-## Project Task
+## 📕 Project Task
 File storage
 * limited size of eDisk for a single user
 * possibility to create folders
@@ -27,12 +28,12 @@ File storage
 project for a group of up to 3 people
 
 ---
-### Autors:
+### 🤓 Autors:
 * Mateusz Białowąs
 * Maciej Bociuk
 * Mateusz Sekściński
 ---
-### Link to application
+### 🌐 Link to application
 https://edisk.herokuapp.com/    
 Slow start
 
@@ -46,12 +47,16 @@ Slow start
    <img alt="Bootstrap" src="https://img.shields.io/badge/Bootstrap-5.0.0-484f58?style=flat-square&logo=Bootstrap&logoColor=white&labelColor=7952B3"/>
    <img alt="Heroku" src="https://img.shields.io/badge/Heroku-430098?style=flat-square&logo=Heroku&logoColor=white"/>
    <img alt="HTML5" src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=white"/>
+   <img alt="CSS3" src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=white"/>
    <img alt="Sass" src="https://img.shields.io/badge/Sass-CC6699?style=flat-square&logo=Sass&logoColor=white"/>
    <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=white"/>
+   <img alt="Git" src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=Git&logoColor=white"/>
+   <img alt="GitHub" src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/>
+   <img alt="Microsoft Azure" src="https://img.shields.io/badge/Microsoft Azure-0078D4?style=flat-square&logo=Microsoft-Azure&logoColor=white"/>
 </div>
 
 ---
-### Screenshots
+### 📷 Screenshots
 ![image](https://user-images.githubusercontent.com/58574619/121564337-a2d92680-ca1b-11eb-94f2-a705922e5687.png)
 ![image](https://user-images.githubusercontent.com/58574619/121564432-bbe1d780-ca1b-11eb-9d0e-d89ebf448fc5.png)
 ![image](https://user-images.githubusercontent.com/58574619/121564481-c69c6c80-ca1b-11eb-89da-0a22d300120e.png)
