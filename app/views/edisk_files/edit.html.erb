@@ -1,5 +1,16 @@
-<h5>Edit file </h5>
+<script>
+    function show_field_for_expiration() {
+        var x = document.getElementById("other_expiration_time_number");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
 <section class="col-8 offset-2 col-sm-6 offset-sm-3">
+  <h5>Edit file </h5>
+
   <%= form_with model: @edisk_file do |f| %>
 
     <% if @edisk_file.errors.any? %>
@@ -16,46 +27,32 @@
     </div>
 
     <div>
-
       <%= f.label :path %>
-      <% actual_dir = EdiskDirectory.find(@edisk_file.edisk_directory_id) %>
-      <%= f.collection_select :edisk_directory_id, EdiskDirectory.all.where(user_id: current_user.id), :id, :ancestry_into_array, {:selected => actual_dir.id} %>
+      <%= f.collection_select :edisk_directory_id, EdiskDirectory.all.where(user_id: current_user.id), :id, :ancestry_into_array, {:selected => @actual_dir.id} %>
     </div>
     <div>
       <%=f.label "expiration time"%>
       <div>
         <p1>
-          <%=radio_button("edisk_file", "expiration_time","5 minutes")%>
-          5 minutes
+          <%=f.radio_button :expiration_time, "nil", :checked => true, :onchange => "show_field_for_expiration()" %>
+          <%= f.label :radio_button_label, 'No expiration time' %>
         </p1>
       </div>
       <div>
         <p1>
-          <%=radio_button("edisk_file", "expiration_time","20 minutes")%>
-          20 minutes
-        </p1>
-      </div>
-      <div>
-        <p1>
-          <%=radio_button("edisk_file", "expiration_time","60 minutes")%>
-          60 minutes
-        </p1>
-      </div>
-      <div>
-        <p1>
-          <%=radio_button("edisk_file", "expiration_time","24 hours")%>
-          24 hours
-        </p1>
-      </div>
-      <div>
-        <p1>
-          <%=radio_button("edisk_file", "expiration_time", "nil")%>
-          No expiration time
+          <%=f.radio_button :expiration_time, "Other", :checked => false, :onchange => "show_field_for_expiration()"%>
+          <%= f.label :radio_button_label, 'Set limit' %>
+
+          <div id="other_expiration_time_number" style="display:none;">
+            <%= f.text_field :number_of_expiration, type:"number", required: true %>
+            <%= f.select :type_of_expiration, options_for_select([["seconds", "seconds"], ["minutes", "minutes"], ["hours", "hours"], ["days", "days"]])%>
+          </div>
         </p1>
       </div>
     </div>
-
-    <%= f.submit "Confirm" %>
+    <div style="position:relative; top:5px;">
+      <%= f.submit "Confirm" %>
+    </div>
 
   <% end %>
 </section>

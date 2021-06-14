@@ -91,16 +91,10 @@ class EdiskDirectoriesController < ApplicationController
   def expiration_time_into_string(expiration_time)
     @returning = ''
     case expiration_time
-    when "5 minutes"
-      @returning = "Limit: 5 minutes"
-    when "20 minutes"
-      @returning = "Limit: 20 minutes"
-    when "60 minutes"
-      @returning = "Limit: 60 minutes"
-    when "24 hours"
-      @returning = "Limit: 24 hours"
     when "nil"
-      @returning = "No limit for expiration"
+      @returning = "Someday"
+    else
+      @returning = expiration_time
     end
   end
 

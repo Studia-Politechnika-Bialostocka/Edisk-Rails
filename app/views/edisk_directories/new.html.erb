@@ -1,5 +1,6 @@
-<h5>Create new directory </h5>
-<%= form_with model: @edisk_directory, url: new_edisk_directory_path(format: @query) do |f| %>
+<section class="col-8 offset-2 col-sm-6 offset-sm-3">
+  <h5>Create new directory </h5>
+  <%= form_with model: @edisk_directory, url: new_edisk_directory_path(format: @query) do |f| %>
 
     <% if @edisk_directory.errors.any? %>
     <div class = "alert alert-danger">
@@ -20,3 +21,4 @@
   <%= f.submit "Confirm" %>
 
 <% end %>
+</section>

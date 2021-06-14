@@ -3,15 +3,12 @@ class EdiskFile < ApplicationRecord
   has_one_attached :efile, dependent: :purge_later
   validates :efile, presence:true
   validates :name, presence:true, uniqueness: true
-  # validate :acceptable_image, :on => :create
 
-  # def acceptable_image
-  #   return unless efile.attached?
-    # u = User.find(userID)
-    # unless efile.byte_size <= (u.ediskSize-u.current_size)
-    #   errors.add(:efile, "is too big")
-    # end
-  # end
+  attr_accessor :number_of_expiration
+  attr_accessor :type_of_expiration
+  def before_save
+    this.expiration_time = @number_of_expiration + " " + @type_of_expiration
+  end
   def pic_for_type
     @a = ''
     case efile.filename.to_s.split(".").last

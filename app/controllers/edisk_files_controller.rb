@@ -10,6 +10,7 @@ class EdiskFilesController < ApplicationController
   def create
     @query = params[:format]
     @edisk_directory = EdiskDirectory.where(user_id: current_user.id).find(params[:direct_id])
+    params[:edisk_file][:expiration_time] = params[:edisk_file][:number_of_expiration] + " " + params[:edisk_file][:type_of_expiration]
     @edisk_file = @edisk_directory.edisk_files.new(edisk_file_params)
     if @edisk_file.save
       redirect_to edisk_directory_path(@edisk_directory),  notice: "Succesfully created"
@@ -19,9 +20,12 @@ class EdiskFilesController < ApplicationController
   end
   def edit
     @edisk_file = EdiskFile.where(userID: current_user.id).find(params[:id])
+    @time = ""
+    @actual_dir = EdiskDirectory.find(@edisk_file.edisk_directory_id)
   end
   def update
     @edisk_file = EdiskFile.where(userID: current_user.id).find(params[:id])
+    params[:edisk_file][:expiration_time] = params[:edisk_file][:number_of_expiration] + " " + params[:edisk_file][:type_of_expiration]
     actual_dir = @edisk_file.edisk_directory_id
     if @edisk_file.update(edisk_file_params)
       redirect_to edisk_directory_path(actual_dir), notice: "Successfully created"
@@ -41,6 +45,7 @@ class EdiskFilesController < ApplicationController
     flash[:notice] = "Link successfully expired"
     redirect_to edisk_directory_path(@edisk_file.edisk_directory_id)
   end
+
   def destroy
     @edisk_file = EdiskFile.where(userID: current_user.id).find(params[:id])
     actual_dir = @edisk_file.edisk_directory_id
@@ -51,7 +56,7 @@ class EdiskFilesController < ApplicationController
 
   private
   def edisk_file_params
-    params.require(:edisk_file).permit(:name, :efile, :userID, :edisk_directory_id, :expiration_time)
+    params.require(:edisk_file).permit(:name, :efile, :userID, :edisk_directory_id, :expiration_time, :number_of_expiration, :type_of_expiration)
   end
 
   def integrity_on_filename

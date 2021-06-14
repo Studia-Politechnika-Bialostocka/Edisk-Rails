@@ -11,14 +11,26 @@
         var file_information = "\nYour file size:" + Number.parseFloat(file_size/1048576).toPrecision(4) + "MB.";
         var sizeExceeded = false;
 
-        if (file_size && maxFileSize && file_size > parseInt(maxFileSize)) {sizeExceeded=true;};
+        if (file_size && maxFileSize && file_size > parseInt(maxFileSize)) {
+            sizeExceeded=true;
+        }
         if (sizeExceeded) {
             window.alert(maxExceededMessage+file_information);
             $(inputFile).val('');
-        };
+        }
     }
+        function show_field_for_expiration() {
+          var x = document.getElementById("other_expiration_time_number");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          }
+          else {
+            x.style.display = "none";
+          }
+        }
 </script>
 
+<section class="col-8 offset-2 col-sm-6 offset-sm-3">
 
 <h5>Create new file </h5>
 <%= form_with model: @edisk_file, url: new_edisk_file_path(format: @query) do |f| %>
@@ -36,7 +48,7 @@
     <%= f.file_field :efile, :onchange => "validateFiles(this)",
         data: { max_file_size: current_user.ediskSize-current_user.current_size } %>
   </div>
-  <div class="field">
+  <div class="field, form-group">
     <%= f.label :name %>
     <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control mb-2" %>
   </div>
@@ -45,40 +57,28 @@
     <%= hidden_field_tag :direct_id,  "#{var}" %>
     <%= f.hidden_field :userID, value: current_user.id %>
   </div>
-  <div>
-    <%=f.label "expiration time"%>
     <div>
-      <p1>
-      <%=radio_button("edisk_file", "expiration_time","5 minutes")%>
-      5 minutes
-      </p1>
+      <%=f.label "expiration time"%>
+      <div>
+        <p1>
+          <%=f.radio_button :expiration_time, "nil", :checked => true, :onchange => "show_field_for_expiration()" %>
+          <%= f.label :radio_button_label, 'No expiration time' %>
+        </p1>
+      </div>
+      <div>
+        <p1>
+          <%=f.radio_button :expiration_time, "Other", :checked => false, :onchange => "show_field_for_expiration()"%>
+          <%= f.label :radio_button_label, 'Set limit' %>
+
+          <div id="other_expiration_time_number" style="display:none;">
+            <%= f.text_field :number_of_expiration, type:"number", required: true %>
+            <%= f.select :type_of_expiration, options_for_select([["seconds", "seconds"], ["minutes", "minutes"], ["hours", "hours"], ["days", "days"]])%>
+          </div>
+        </p1>
+      </div>
     </div>
-    <div>
-      <p1>
-      <%=radio_button("edisk_file", "expiration_time","20 minutes")%>
-      20 minutes
-      </p1>
-    </div>
-    <div>
-      <p1>
-      <%=radio_button("edisk_file", "expiration_time","60 minutes")%>
-      60 minutes
-      </p1>
-    </div>
-    <div>
-      <p1>
-      <%=radio_button("edisk_file", "expiration_time","24 hours")%>
-      24 hours
-      </p1>
-    </div>
-    <div>
-      <p1>
-      <%=radio_button("edisk_file", "expiration_time", "nil")%>
-      No expiration time
-      </p1>
-    </div>
-  </div>
 
   <%= f.submit "Confirm" %>
 
 <% end %>
+</section>
