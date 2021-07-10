@@ -11,6 +11,7 @@
 * [🌐 Link to Application](https://edisk.herokuapp.com/)   
 * [🛠 Tools and technologies](#-Tools-and-technologies)
 * [📷 Screenshots](#-Screenshots)
+* [📄 UML](#-UML)
 
 ---
 
@@ -67,6 +68,15 @@ Slow start
 ![image](https://user-images.githubusercontent.com/58574619/121564524-d1ef9800-ca1b-11eb-8017-3c94902ae73f.png)
 ![image](https://user-images.githubusercontent.com/58574619/121786291-3a2aaf00-cbbf-11eb-8a41-6e92019c4b35.png)
 ![image](https://user-images.githubusercontent.com/58574619/121564588-ea5fb280-ca1b-11eb-809f-82ad950a0c05.png)
+
+
+---
+### 📄 UML
+
+Generated with Rails ERD
+
+![image](https://user-images.githubusercontent.com/58574619/125174889-a9002580-e1c8-11eb-96c7-e9e8c7f6171a.png)
+
 
 
 
